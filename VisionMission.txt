@@ -1,0 +1,5 @@
+Vision
+A mobile game application in 2D for android users, that is compatible for any android versions. A mind game that will let users think quickly to solve the maze. Users in this game has no age limit.
+
+Mission
+To develop a mobile game application with a user friendly UI that will allow the user to move the ball using gyroscope to finish the maze.
