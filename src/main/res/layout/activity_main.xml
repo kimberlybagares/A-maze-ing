@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@drawable/abc_cab_background_internal_bg"
+    android:weightSum="1"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="a-MAZE-ing"
+        android:textStyle="italic|bold"
+        android:textSize="50dp"
+        android:id="@+id/textView"/>
+
+    <Button
+        android:paddingRight="50dp"
+        android:paddingLeft="50dp"
+        android:layout_width="254dp"
+        android:layout_height="64dp"
+        android:text="@string/button_play"
+        android:onClick="StageMenu"
+        android:id="@+id/buttonPlay" />
+
+    <FrameLayout
+        android:layout_width="285dp"
+        android:layout_height="78dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_about"
+            android:id="@+id/button"
+            android:layout_column="1"
+            android:layout_gravity="left|bottom" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_exit"
+            android:id="@+id/button2"
+            android:layout_gravity="right|bottom"
+            android:layout_column="31"
+            android:onClick="ExitApp"
+            />
+
+    </FrameLayout>
+
+</LinearLayout>
