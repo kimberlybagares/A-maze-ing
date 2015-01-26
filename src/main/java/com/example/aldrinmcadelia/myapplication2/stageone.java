@@ -1,19 +1,54 @@
 package com.example.aldrinmcadelia.myapplication2;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.ImageView;
 
+public class stageone extends Activity implements SensorEventListener {
+    private SensorManager sensorManager;
+    private Sensor accelerometer;
+    private long lastUpdate;
 
-public class stageone extends ActionBarActivity {
+    AnimatedView animatedView = null;
+    ShapeDrawable mDrawable = new ShapeDrawable();
+    public static int x;
+    public static int y;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stageone);
+        // setContentView(R.layout.activity_main);
+
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        accelerometer = sensorManager
+                .getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        lastUpdate = System.currentTimeMillis();
+
+        animatedView = new AnimatedView(this);
+        setContentView(animatedView);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sensorManager.registerListener(this, accelerometer,
+                SensorManager.SENSOR_DELAY_GAME);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(this);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -23,17 +58,43 @@ public class stageone extends ActionBarActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public void onAccuracyChanged(Sensor arg0, int arg1) {
+        // TODO Auto-generated method stub
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        // TODO Auto-generated method stub
+        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+
+            x -= (int) event.values[0];
+            y += (int) event.values[1];
+
+        }
+    }
+
+    public class AnimatedView extends ImageView {
+
+        static final int width = 50;
+        static final int height = 50;
+
+        public AnimatedView(Context context) {
+            super(context);
+            // TODO Auto-generated constructor stub
+
+            mDrawable = new ShapeDrawable(new OvalShape());
+            mDrawable.getPaint().setColor(0xffffAC23);
+            mDrawable.setBounds(x, y, x + width, y + height);
+
         }
 
-        return super.onOptionsItemSelected(item);
+        @Override
+        protected void onDraw(Canvas canvas) {
+
+            mDrawable.setBounds(x, y, x + width, y + height);
+            mDrawable.draw(canvas);
+            invalidate();
+        }
     }
 }

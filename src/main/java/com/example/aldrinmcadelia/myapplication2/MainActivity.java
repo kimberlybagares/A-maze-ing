@@ -48,6 +48,7 @@ public class MainActivity extends ActionBarActivity{
     }
     public void ExitApp(View view){
         finish();
+        System.exit(0);
     }
 
 }
