@@ -7,14 +7,15 @@
     android:orientation="vertical"
     android:layout_gravity="center"
     tools:context="com.example.aldrinmcadelia.myapplication2.StagePage"
-    android:weightSum="1">
-
+    android:weightSum="1"
+    android:background="#000000"
+    >
     <TextView
         android:text="@string/Stages"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30dp"
-        android:textColor="#111"
+        android:textColor="#FFFFFF"
         android:textStyle="bold|italic"
         android:id="@+id/textView2"
         android:layout_alignParentTop="true"
@@ -101,7 +102,7 @@
         android:layout_height="wrap_content"
         android:text="Back"
         android:id="@+id/button12"
-        android:layout_gravity="right"
+        android:layout_gravity="bottom|end"
         android:onClick="backPage"/>
 
 
