@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.aldrinmcadelia.myapplication2" >
+    package="com.example.aldrinmcadelia.myapplication" >
 
     <application
         android:allowBackup="true"
@@ -17,20 +17,36 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".Stage_page"
+            android:label="@string/title_activity_stage_page"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.aldrinmcadelia.myapplication.MainActivity" />
+        </activity>
+        <activity
             android:name=".StagePage"
             android:label="@string/title_activity_stage_page"
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.aldrinmcadelia.myapplication2.MainActivity" />
+                android:value="com.example.aldrinmcadelia.myapplication.MainActivity" />
         </activity>
         <activity
-            android:name=".stageone"
+            android:name=".AboutPage"
+            android:label="@string/title_activity_about_page"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.aldrinmcadelia.myapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Stageone"
             android:label="@string/title_activity_stageone"
             android:parentActivityName=".StagePage" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.aldrinmcadelia.myapplication2.StagePage" />
+                android:value="com.example.aldrinmcadelia.myapplication.StagePage" />
         </activity>
     </application>
 

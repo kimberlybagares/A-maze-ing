@@ -1,11 +1,11 @@
-package com.example.aldrinmcadelia.myapplication2;
+package com.example.aldrinmcadelia.myapplication;
+
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-
 
 public class AboutPage extends ActionBarActivity {
 
@@ -38,4 +38,3 @@ public class AboutPage extends ActionBarActivity {
     }
 
 }
-

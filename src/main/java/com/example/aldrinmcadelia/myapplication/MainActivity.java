@@ -1,5 +1,6 @@
-package com.example.aldrinmcadelia.myapplication2;
+package com.example.aldrinmcadelia.myapplication;
 
+import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,15 +9,32 @@ import android.view.View;
 import android.content.Intent;
 import android.widget.EditText;
 import android.app.Activity;
+import android.widget.TextView;
 
+public class MainActivity extends ActionBarActivity {
 
-public class MainActivity extends ActionBarActivity{
-
-    public final static String EXTRA_MESSAGE = "Final Message";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        String fontPath = "GoodDog.otf";
+
+        TextView tittle = (TextView) findViewById(R.id.Title_view);
+        TextView play = (TextView) findViewById(R.id.buttonPlay);
+        TextView about = (TextView) findViewById(R.id.buttonAbout);
+        TextView exit = (TextView) findViewById(R.id.buttonExit);
+
+        Typeface tittleView =  Typeface.createFromAsset(getAssets(), fontPath);
+        Typeface playView = Typeface.createFromAsset(getAssets(), fontPath);
+        Typeface aboutView = Typeface.createFromAsset(getAssets(), fontPath);
+        Typeface exitView = Typeface.createFromAsset(getAssets(), fontPath);
+
+        tittle.setTypeface(tittleView);
+        play.setTypeface(playView);
+        about.setTypeface(aboutView);
+        exit.setTypeface(exitView);
+
     }
 
 
@@ -43,11 +61,13 @@ public class MainActivity extends ActionBarActivity{
     }
 
     public void StageMenu(View view) {
+        finish();
         Intent intent = new Intent(this, StagePage.class);
         startActivity(intent);
     }
 
-    public void Abouta(View view) {
+    public void About(View view) {
+        finish();
         Intent intent = new Intent (this, AboutPage.class);
         startActivity(intent);
     }
@@ -56,6 +76,4 @@ public class MainActivity extends ActionBarActivity{
         finish();
         System.exit(0);
     }
-
 }
-

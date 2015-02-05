@@ -12,11 +12,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="a-MAZE-ing"
+        android:text="a MAZE ing"
         android:textStyle="italic|bold"
         android:textSize="50dp"
-        android:textColor="#FFFFFF"
-        android:id="@+id/textView"/>
+        android:textColor="#0000FF"
+        android:id="@+id/Title_view"/>
 
     <Button
         android:paddingRight="50dp"
@@ -24,8 +24,12 @@
         android:layout_width="254dp"
         android:layout_height="64dp"
         android:text="@string/button_play"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         android:onClick="StageMenu"
-        android:id="@+id/buttonPlay" />
+        android:id="@+id/buttonPlay"
+        android:background="@drawable/selectcolor"
+        />
 
     <FrameLayout
         android:layout_width="285dp"
@@ -35,19 +39,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_about"
-            android:onClick="Abouta"
-            android:id="@+id/button"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:onClick="About"
+            android:id="@+id/buttonAbout"
             android:layout_column="1"
-            android:layout_gravity="left|bottom" />
+            android:layout_gravity="left|bottom"
+            android:background="@drawable/selectcolor"
+            />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_exit"
-            android:id="@+id/button2"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:id="@+id/buttonExit"
             android:layout_gravity="right|bottom"
             android:layout_column="31"
             android:onClick="ExitApp"
+            android:background="@drawable/selectcolor"
             />
 
     </FrameLayout>

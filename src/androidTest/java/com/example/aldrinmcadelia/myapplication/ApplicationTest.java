@@ -1,4 +1,4 @@
-package com.example.aldrinmcadelia.myapplication2;
+package com.example.aldrinmcadelia.myapplication;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

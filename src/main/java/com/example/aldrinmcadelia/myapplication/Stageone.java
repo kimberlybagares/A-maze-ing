@@ -1,4 +1,4 @@
-package com.example.aldrinmcadelia.myapplication2;
+package com.example.aldrinmcadelia.myapplication;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,7 +13,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.widget.ImageView;
 
-public class stageone extends Activity implements SensorEventListener {
+public class Stageone extends Activity implements SensorEventListener {
     private SensorManager sensorManager;
     private Sensor accelerometer;
     private long lastUpdate;

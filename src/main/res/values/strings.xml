@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">a-Maze-ing</string>
-    <string name="edit_message">Enter a message</string>
+    <string name="app_name">a Maze ing</string>
     <string name="button_play">Play</string>
     <string name="Stages">Stages</string>
     <string name="button_about">About</string>
@@ -13,5 +12,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_stage_page">StagePage</string>
     <string name="title_activity_stageone">stageone</string>
+    <string name="title_activity_about_page">AboutPage</string>
 
 </resources>
