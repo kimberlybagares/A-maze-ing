@@ -38,7 +38,7 @@
             android:textColor="#FFFFFF"
             android:id="@+id/one"
             android:onClick="stageOne"
-            android:background="@drawable/blue"
+            android:background="@drawable/selectcolor"
             />
 
         <Button

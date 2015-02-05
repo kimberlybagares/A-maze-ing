@@ -17,14 +17,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Stage_page"
-            android:label="@string/title_activity_stage_page"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.aldrinmcadelia.myapplication.MainActivity" />
-        </activity>
-        <activity
             android:name=".StagePage"
             android:label="@string/title_activity_stage_page"
             android:parentActivityName=".MainActivity" >

@@ -76,8 +76,8 @@ public class Stageone extends Activity implements SensorEventListener {
 
     public class AnimatedView extends ImageView {
 
-        static final int width = 50;
-        static final int height = 50;
+        static final int width = 30;
+        static final int height = 30;
 
         public AnimatedView(Context context) {
             super(context);

@@ -16,27 +16,32 @@
         android:textStyle="bold"
         android:textSize="50dp"
         android:textColor="#FFFFFF"
-        android:id="@+id/textView"/>
+        android:id="@+id/aboutText"/>
 
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="280dp"
+        android:layout_height="180dp"
+        android:padding="10dp"
         android:text="A maze game that lets the ball find its way out from the maze! Just move the device sidewards, upward and downward! Enjoy!"
         android:textStyle="normal"
         android:textSize="30dp"
         android:textColor="#F2F2F2"
-        android:id="@+id/textView4" />
+        android:id="@+id/aboutText2"
+        android:background="@drawable/borderline"
+        android:layout_weight="0.17" />
 
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back"
-        android:id="@+id/button2"
-        android:layout_gravity="right|bottom"
+        android:textColor="#FFFFFF"
+        android:id="@+id/back_main"
+        android:layout_gravity="right"
         android:layout_column="31"
         android:onClick="backPage"
+        android:background="@drawable/blue"
         />
 
 </LinearLayout>
