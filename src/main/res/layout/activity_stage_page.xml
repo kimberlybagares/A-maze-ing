@@ -37,6 +37,7 @@
             android:textSize="20sp"
             android:textColor="#FFFFFF"
             android:id="@+id/one"
+			android:drawableBottom="@drawable/unlock"
             android:onClick="stageOne"
             android:background="@drawable/selectcolor"
             />
@@ -48,6 +49,7 @@
             android:textSize="20sp"
             android:textColor="#FFFFFF"
             android:id="@+id/two"
+			android:drawableBottom="@drawable/lock"
             android:layout_gravity="center_horizontal|top"
             android:background="@drawable/blue"/>
 
@@ -58,6 +60,7 @@
             android:textSize="20sp"
             android:textColor="#FFFFFF"
             android:id="@+id/three"
+			android:drawableBottom="@drawable/lock"
             android:layout_gravity="right|top"
             android:background="@drawable/blue"/>
 
@@ -68,6 +71,7 @@
             android:textSize="20sp"
             android:textColor="#FFFFFF"
             android:id="@+id/four"
+			android:drawableBottom="@drawable/lock"
             android:layout_gravity="left|center_vertical"
             android:background="@drawable/blue"/>
 
@@ -78,6 +82,7 @@
             android:textSize="20sp"
             android:textColor="#FFFFFF"
             android:id="@+id/five"
+			android:drawableBottom="@drawable/lock"
             android:layout_gravity="center"
             android:background="@drawable/blue"/>
 
@@ -88,6 +93,7 @@
             android:textSize="20sp"
             android:textColor="#FFFFFF"
             android:id="@+id/six"
+			android:drawableBottom="@drawable/lock"
             android:layout_gravity="right|center_vertical"
             android:background="@drawable/blue"/>
 
@@ -98,6 +104,7 @@
             android:textSize="20sp"
             android:textColor="#FFFFFF"
             android:id="@+id/seven"
+			android:drawableBottom="@drawable/lock"
             android:layout_gravity="left|bottom"
             android:background="@drawable/blue"/>
 
@@ -108,6 +115,7 @@
             android:textSize="20sp"
             android:textColor="#FFFFFF"
             android:id="@+id/eight"
+			android:drawableBottom="@drawable/lock"
             android:layout_gravity="center_horizontal|bottom"
             android:background="@drawable/blue"/>
 
@@ -118,6 +126,7 @@
             android:textSize="20sp"
             android:textColor="#FFFFFF"
             android:id="@+id/nine"
+			android:drawableBottom="@drawable/lock"
             android:layout_gravity="right|bottom"
             android:background="@drawable/blue"/>
 
