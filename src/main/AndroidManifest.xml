@@ -40,6 +40,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.aldrinmcadelia.myapplication.StagePage" />
         </activity>
+        <activity
+            android:name=".StageTwo"
+            android:label="@string/title_activity_stage_two"
+            android:parentActivityName=".StagePage" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.aldrinmcadelia.myapplication.StagePage" />
+        </activity>
     </application>
 
 </manifest>

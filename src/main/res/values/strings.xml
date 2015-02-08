@@ -13,5 +13,6 @@
     <string name="title_activity_stage_page">StagePage</string>
     <string name="title_activity_stageone">stageone</string>
     <string name="title_activity_about_page">AboutPage</string>
+    <string name="title_activity_stage_two">StageTwo</string>
 
 </resources>

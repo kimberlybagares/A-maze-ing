@@ -10,8 +10,12 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.Menu;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 
 public class Stageone extends Activity implements SensorEventListener {
     private SensorManager sensorManager;
@@ -20,13 +24,18 @@ public class Stageone extends Activity implements SensorEventListener {
 
     AnimatedView animatedView = null;
     ShapeDrawable mDrawable = new ShapeDrawable();
-    public static int x;
-    public static int y;
+    public int x;
+    public int y;
+    public float xmax;
+    public float ymax;
+    public float frametime = 0.666f;
+    public float xAcceleration,xVelocity = 0.0f;
+    public float yAcceleration,yVelocity = 0.0f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // setContentView(R.layout.activity_main);
+
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         accelerometer = sensorManager
@@ -35,6 +44,13 @@ public class Stageone extends Activity implements SensorEventListener {
 
         animatedView = new AnimatedView(this);
         setContentView(animatedView);
+        //setContentView(R.layout.activity_stageone);
+        //RelativeLayout.LayoutParams Lp = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        //addContentView(animatedView, Lp);
+
+        Display display = getWindowManager().getDefaultDisplay();
+        xmax = (float)display.getWidth() - 50;
+        ymax = (float)display.getHeight() - 50;
     }
 
     @Override
@@ -63,13 +79,39 @@ public class Stageone extends Activity implements SensorEventListener {
 
     }
 
+    public void updateBall(){
+        xVelocity += (xAcceleration*frametime);
+        yVelocity += (yAcceleration*frametime);
+
+        float xS = (xVelocity/2)* frametime;
+        float yS = (yVelocity/2)* frametime;
+
+        x -= xS;
+        y -= yS;
+
+        if (x > xmax) {
+            x = (int) xmax;
+        } else if (x < 0) {
+            x = 0;
+        }
+        if (y > ymax) {
+            y = (int) ymax;
+        } else if (y < 0) {
+            y = 0;
+        }
+
+    }
+
     @Override
     public void onSensorChanged(SensorEvent event) {
         // TODO Auto-generated method stub
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
 
+            //x -= (int) Math.pow(event.values[0],3);
+            //y += (int) Math.pow(event.values[1],3);
             x -= (int) event.values[0];
             y += (int) event.values[1];
+            updateBall();
 
         }
     }
@@ -87,6 +129,7 @@ public class Stageone extends Activity implements SensorEventListener {
             mDrawable.getPaint().setColor(0xffffAC23);
             mDrawable.setBounds(x, y, x + width, y + height);
 
+
         }
 
         @Override
@@ -94,6 +137,7 @@ public class Stageone extends Activity implements SensorEventListener {
 
             mDrawable.setBounds(x, y, x + width, y + height);
             mDrawable.draw(canvas);
+            Display display = getWindowManager().getDefaultDisplay();
             invalidate();
         }
     }
