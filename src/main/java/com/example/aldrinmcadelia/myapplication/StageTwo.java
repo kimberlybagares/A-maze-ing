@@ -1,117 +1,56 @@
+/*
+ * Copyright (C) 2008 Jason Tomlinson.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.example.aldrinmcadelia.myapplication;
-
 import android.app.Activity;
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RectShape;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
+import android.view.Window;
 
-public class StageTwo extends Activity implements SensorEventListener
-{
-    /** Called when the activity is first created. */
-    CustomDrawableView mCustomDrawableView = null;
-    ShapeDrawable mDrawable = new ShapeDrawable();
-    public static int x;
-    public static int y;
-    public static int z;
-    private SensorManager sensorManager = null;
-    TextView x1, y1, z1;
-    /** Called when the activity is first created. */
+import com.example.aldrinmcadelia.myapplication.AmazedView;
+
+
+/**
+ * Activity responsible for controlling the application.
+ */
+public class StageTwo extends Activity {
+
+    // custom view
+    private AmazedView mView;
+
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
-
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Get a reference to a SensorManager
-        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        mCustomDrawableView = new CustomDrawableView(this);
-        setContentView(mCustomDrawableView);
-        //setContentView(R.layout.main);
 
-    }
+        // remove title bar.
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-    // This method will update the UI on new sensor events
-    public void onSensorChanged(SensorEvent sensorEvent)
-    {
-        {
-            if (sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-
-                //TextView tvX= (TextView)findViewById(R.id.x_axis);
-                //TextView tvY= (TextView)findViewById(R.id.y_axis);
-                //TextView tvZ= (TextView)findViewById(R.id.z_axis);
-
-                x -= (int) sensorEvent.values[0];
-                y += (int) sensorEvent.values[1];
-                z += (int) sensorEvent.values[2];
-
-            }
-
-            //   if (sensorEvent.sensor.getType() == Sensor.TYPE_ORIENTATION) {
-
-            //  }
-        }
-    }
-
-    // I've chosen to not implement this method
-    public void onAccuracyChanged(Sensor arg0, int arg1)
-    {
-        // TODO Auto-generated method stub
-
+        // setup our view, give it focus and display.
+        mView = new AmazedView(getApplicationContext(), this);
+        mView.setFocusable(true);
+        setContentView(mView);
     }
 
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         super.onResume();
-        // Register this class as a listener for the accelerometer sensor
-        sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
-                SensorManager.SENSOR_DELAY_FASTEST);
-        // ...and the orientation sensor
-
+        mView.registerListener();
     }
 
     @Override
-    protected void onStop()
-    {
-        // Unregister the listener
-        sensorManager.unregisterListener(this);
-        super.onStop();
-    }
-
-    public class CustomDrawableView extends View
-    {
-        static final int width = 150;
-        static final int height = 250;
-
-        public CustomDrawableView(Context context)
-        {
-            super(context);
-
-            mDrawable = new ShapeDrawable(new RectShape());
-            mDrawable.getPaint().setColor(0xff74AC23);
-            mDrawable.setBounds(x, y, x + width, y + height);
-
-        }
-
-        protected void onDraw(Canvas canvas)
-        {
-
-            RectF rect = new RectF(StageTwo.x, StageTwo.y, StageTwo.x + width, StageTwo.y
-                    + height); // set bounds of rectangle
-            Paint p = new Paint(); // set some paint options
-            p.setColor(Color.BLUE);
-            canvas.drawRect(rect, p);
-            invalidate();
-        }
+    public void onSaveInstanceState(Bundle icicle) {
+        super.onSaveInstanceState(icicle);
+        mView.unregisterListener();
     }
 }
