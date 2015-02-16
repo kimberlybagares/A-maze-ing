@@ -39,7 +39,7 @@ public class Stageone extends Activity implements SensorEventListener {
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         accelerometer = sensorManager
-                .getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+                .getDefaultSensor(Sensor.   TYPE_ACCELEROMETER);
         lastUpdate = System.currentTimeMillis();
 
         animatedView = new AnimatedView(this);
@@ -49,8 +49,8 @@ public class Stageone extends Activity implements SensorEventListener {
         //addContentView(animatedView, Lp);
 
         Display display = getWindowManager().getDefaultDisplay();
-        xmax = (float)display.getWidth() - 50;
-        ymax = (float)display.getHeight() - 50;
+        xmax = (float)display.getWidth() - 30;
+        ymax = (float)display.getHeight() - 70;
     }
 
     @Override

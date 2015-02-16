@@ -14,6 +14,9 @@
     <string name="title_activity_stageone">stageone</string>
     <string name="title_activity_about_page">AboutPage</string>
     <string name="title_activity_stage_two">StageTwo</string>
+    <string name="title_activity_maze">MazeActivity</string>
+    <string name="title_activity_maze_view">MazeView</string>
+
     <array name="gameStrings">
         <item>Lives</item>
         <item>Level</item>
@@ -27,5 +30,7 @@
         <item>TOUCH SCREEN TO RESTART</item>
         <item>PLEASE ROTATE BACK TO PORTRAIT MODE</item>
     </array>
+
+    <string name="title_activity_stage_three">StageThree</string>
 
 </resources>

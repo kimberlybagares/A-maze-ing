@@ -92,4 +92,8 @@ public class StagePage extends ActionBarActivity {
         finish();
         startActivity(intent);
     }
+    public void stageThree(View view){
+        Intent intent = new Intent(this,StageThree.class);
+        finish();
+    }
 }

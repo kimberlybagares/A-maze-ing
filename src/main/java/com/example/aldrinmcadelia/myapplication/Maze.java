@@ -1,6 +1,8 @@
-
-
 package com.example.aldrinmcadelia.myapplication;
+
+/**
+ * Created by Aldrin M Cadeliña on 2/11/2015.
+ */
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,7 +25,7 @@ import android.util.Log;
 public class Maze {
 
     // maze tile size and dimension
-    private final static int TILE_SIZE = 16;
+    private final static int TILE_SIZE = 20;
     private final static int MAZE_COLS = 20;
     private final static int MAZE_ROWS = 26;
 
@@ -54,8 +56,8 @@ public class Maze {
 
     /**
      * Maze constructor.
-     * 
-     * @param context
+     *
+     //* @param context
      *            Application context used to load images.
      */
     Maze(Activity activity) {
@@ -69,7 +71,7 @@ public class Maze {
 
     /**
      * Load specified maze level.
-     * 
+     *
      * @param activity
      *           Activity controlled the maze, we use this load the level data
      * @param newLevel
@@ -108,7 +110,7 @@ public class Maze {
 
     /**
      * Draw the maze.
-     * 
+     *
      * @param canvas
      *            Canvas object to draw too.
      * @param paint
@@ -150,7 +152,7 @@ public class Maze {
 
     /**
      * Determine which cell the marble currently occupies.
-     * 
+     *
      * @param x
      *            Current x co-ordinate.
      * @param y
@@ -177,9 +179,10 @@ public class Maze {
         return mMazeData[mLocation];
     }
 
+
     /**
      * Closes the specified stream.
-     * 
+     *
      * @param stream
      *            The stream to close.
      */

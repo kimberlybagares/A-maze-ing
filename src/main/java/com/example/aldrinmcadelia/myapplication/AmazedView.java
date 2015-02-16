@@ -1,26 +1,42 @@
-
 package com.example.aldrinmcadelia.myapplication;
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Typeface;
-import android.hardware.SensorListener;
-import android.hardware.SensorManager;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
-import android.view.View;
+
+/*
+ * Copyright (C) 2008 Jason Tomlinson.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 
-//import com.example.aldrinmcadelia.myapplication.Marble;
-//import com.example.aldrinmcadelia.myapplication.Maze;
+        import android.app.Activity;
+        import android.content.Context;
+        import android.graphics.Canvas;
+        import android.graphics.Color;
+        import android.graphics.Paint;
+        import android.graphics.Typeface;
+        import android.hardware.Sensor;
+        import android.hardware.SensorEvent;
+        import android.hardware.SensorEventListener;
+        import android.hardware.SensorListener;
+        import android.hardware.SensorManager;
+        import android.view.KeyEvent;
+        import android.view.MotionEvent;
+        import android.view.View;
 
 /**
  * Custom view used to draw the maze and marble. Responds to accelerometer
  * updates to roll the marble around the screen.
  */
-public class AmazedView extends View {
+public class AmazedView extends View implements SensorEventListener {
     // Game objects
     private Marble mMarble;
     private Maze mMaze;
@@ -84,11 +100,7 @@ public class AmazedView extends View {
     // accelerometer sensor values.
     private float mAccelX = 0;
     private float mAccelY = 0;
-    private float mAccelZ = 0; // this is never used but just in-case future
-    // versions make use of it.
 
-    // accelerometer buffer, currently set to 0 so even the slightest movement
-    // will roll the marble.
     private float mSensorBuffer = 0;
 
     // http://code.google.com/android/reference/android/hardware/SensorManager.html#SENSOR_ACCELEROMETER
@@ -100,27 +112,14 @@ public class AmazedView extends View {
             // grab the values required to respond to user movement.
             mAccelX = values[0];
             mAccelY = values[1];
-            mAccelZ = values[2];
         }
 
-        // reports when the accuracy of sensor has change
-        // SENSOR_STATUS_ACCURACY_HIGH = 3
-        // SENSOR_STATUS_ACCURACY_LOW = 1
-        // SENSOR_STATUS_ACCURACY_MEDIUM = 2
-        // SENSOR_STATUS_UNRELIABLE = 0 //calibration required.
+
         public void onAccuracyChanged(int sensor, int accuracy) {
             // currently not used
         }
     };
 
-    /**
-     * Custom view constructor.
-     * 
-     * @param context
-     *            Application context
-     * @param activity
-     *            Activity controlling the view
-     */
     public AmazedView(Context context, Activity activity) {
         super(context);
 
@@ -134,8 +133,6 @@ public class AmazedView extends View {
 
         // setup accelerometer sensor manager.
         mSensorManager = (SensorManager) activity.getSystemService(Context.SENSOR_SERVICE);
-        // register our accelerometer so we can receive values.
-        // SENSOR_DELAY_GAME is the recommended rate for games
         mSensorManager.registerListener(mSensorAccelerometer, SensorManager.SENSOR_ACCELEROMETER,
                 SensorManager.SENSOR_DELAY_GAME);
 
@@ -182,16 +179,16 @@ public class AmazedView extends View {
         // very basic state machine, makes a good foundation for a more complex
         // game.
         switch (mCurState) {
-        case GAME_INIT:
-            // prepare a new game for the user.
-            initNewGame();
-            switchGameState(GAME_RUNNING);
+            case GAME_INIT:
+                // prepare a new game for the user.
+                initNewGame();
+                switchGameState(GAME_RUNNING);
 
-        case GAME_RUNNING:
-            // update our marble.
-            if (!mWarning)
-                updateMarble();
-            break;
+            case GAME_RUNNING:
+                // update our marble.
+                if (!mWarning)
+                    updateMarble();
+                break;
         }
 
         // redraw the screen once our tick function is complete.
@@ -240,18 +237,10 @@ public class AmazedView extends View {
 
         // check which cell the marble is currently occupying.
         if (mMaze.getCellType(mMarble.getX(), mMarble.getY()) == mMaze.VOID_TILE) {
-            // user entered the "void".
-            if (mMarble.getLives() > 0) {
-                // user still has some lives remaining, restart the level.
-                mMarble.death();
-                mMarble.init();
-                mWarning = true;
-            } else {
-                // user has no more lives left, end of game.
-                mEndTime = System.currentTimeMillis();
-                mTotalTime += mEndTime - mStartTime;
-                switchGameState(GAME_OVER);
-            }
+            int x = mMarble.getX();
+            int y = mMarble.getY();
+
+
 
         } else if (mMaze.getCellType(mMarble.getX(), mMarble.getY()) == mMaze.EXIT_TILE) {
             // user has reached the exit tiles, prepare the next level.
@@ -297,28 +286,28 @@ public class AmazedView extends View {
 
         // simple state machine, draw screen depending on the current state.
         switch (mCurState) {
-        case GAME_RUNNING:
-            // draw our maze first since everything else appears "on top" of it.
-            mMaze.draw(mCanvas, mPaint);
+            case GAME_RUNNING:
+                // draw our maze first since everything else appears "on top" of it.
+                mMaze.draw(mCanvas, mPaint);
 
-            // draw our marble and hud.
-            mMarble.draw(mCanvas, mPaint);
+                // draw our marble and hud.
+                mMarble.draw(mCanvas, mPaint);
 
-            // draw hud
-            drawHUD();
-            break;
+                // draw hud
+                drawHUD();
+                break;
 
-        case GAME_OVER:
-            drawGameOver();
-            break;
+            case GAME_OVER:
+                drawGameOver();
+                break;
 
-        case GAME_COMPLETE:
-            drawGameComplete();
-            break;
+            case GAME_COMPLETE:
+                drawGameComplete();
+                break;
 
-        case GAME_LANDSCAPE:
-            drawLandscapeMode();
-            break;
+            case GAME_LANDSCAPE:
+                drawLandscapeMode();
+                break;
         }
 
         gameTick();
@@ -393,7 +382,7 @@ public class AmazedView extends View {
      * Updates the current game state with a new state. At the moment this is
      * very basic however if the game was to get more complicated the code
      * required for changing game states could grow quickly.
-     * 
+     *
      * @param newState
      *            New game state
      */
@@ -426,5 +415,15 @@ public class AmazedView extends View {
         mStrings = null;
         unregisterListener();
         mActivity.finish();
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
     }
 }

@@ -7,8 +7,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.content.Intent;
-import android.widget.EditText;
-import android.app.Activity;
 import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
@@ -75,5 +73,11 @@ public class MainActivity extends ActionBarActivity {
     public void ExitApp(View view){
         finish();
         System.exit(0);
+    }
+
+    /**
+     * Created by Aldrin M Cadeliña on 2/8/2015.
+     */
+    public static class MazeView {
     }
 }
