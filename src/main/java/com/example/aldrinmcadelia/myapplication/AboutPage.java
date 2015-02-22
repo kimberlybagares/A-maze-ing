@@ -53,8 +53,9 @@ public class AboutPage extends ActionBarActivity {
 
     public void backPage(View view){
         Intent intent = new Intent(this, MainActivity.class);
-        finish();
+
         startActivity(intent);
+        finish();
 
     }
 

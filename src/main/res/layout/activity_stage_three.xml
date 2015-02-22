@@ -9,15 +9,6 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.aldrinmcadelia.myapplication.StageThree">
 
-    <com.example.aldrinmcadelia.myapplication.Mazer
-        id="@+id/mazeR"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        mazeR:cellWidth="@dimen/cellWidth"
-        mazeR:pixelWidth="@dimen/pixelWidth"
-        mazeR:pixelHeight="@dimen/pixelHeight"
-        mazeR:ballDiam="@dimen/ballDiam"
-        />
 
 
 

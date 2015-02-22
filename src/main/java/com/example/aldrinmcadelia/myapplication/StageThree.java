@@ -1,79 +1,48 @@
 package com.example.aldrinmcadelia.myapplication;
+/*
+ * Copyright (C) 2008 Jason Tomlinson.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.OvalShape;
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
-import android.view.Display;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.ImageView;
+import android.view.Window;
 
+/**
+ * Activity responsible for controlling the application.
+ */
+public class StageThree extends Activity {
 
-public class StageThree extends ActionBarActivity {
-
-    AnimatedView animate = null;
-    int [][] maze = {
-            {0, 0, 0, 0, 0},
-            {0, 1, 2, 1, 0},
-            {0, 0, 0, 1, 0},
-            {1, 1, 2, 1, 0},
-            {0, 0, 0, 0, 0}
-    };
-    Bitmap[] bitmaps = {
-            BitmapFactory.decodeResource(getResources(), R.drawable.path),
-            BitmapFactory.decodeResource(getResources(), R.drawable.exit),
-            BitmapFactory.decodeResource(getResources(), R.drawable.exit)
-    };
-    //MazeR mazer = new MazeR(bitmaps,maze, 5, 5, 480, 320);
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_stage_three);
-       animate = new AnimatedView(this);
-        setContentView(animate);
 
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-    }
+        // setup our view, give it focus and display.
+        //mView = new AmazedView(getApplicationContext(), this);
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_stage_three, menu);
-        return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-    public class AnimatedView extends ImageView {
-
-        static final int width = 30;
-        static final int height = 30;
-
-        public AnimatedView(Context context) {
-            super(context);
-            // TODO Auto-generated constructor stub
-
-        }
+    protected void onResume() {
 
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle icicle) {
+
+    }
 }

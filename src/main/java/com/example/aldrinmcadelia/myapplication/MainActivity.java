@@ -59,15 +59,19 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void StageMenu(View view) {
-        finish();
+
         Intent intent = new Intent(this, StagePage.class);
+
         startActivity(intent);
+        finish();
     }
 
     public void About(View view) {
-        finish();
+
         Intent intent = new Intent (this, AboutPage.class);
+
         startActivity(intent);
+        finish();
     }
 
     public void ExitApp(View view){

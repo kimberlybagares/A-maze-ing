@@ -51,28 +51,18 @@
                 android:value="com.example.aldrinmcadelia.myapplication.StagePage" />
         </activity>
         <activity
-            android:name=".MazeActivity"
-            android:label="@string/title_activity_maze"
-            android:parentActivityName=".StageTwo" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.aldrinmcadelia.myapplication.StageTwo" />
-        </activity>
-        <activity
-            android:name=".MazeView"
-            android:label="@string/title_activity_maze_view"
-            android:parentActivityName=".StageTwo" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.aldrinmcadelia.myapplication.StageTwo" />
-        </activity>
-        <activity
             android:name=".StageThree"
             android:label="@string/title_activity_stage_three"
-            android:parentActivityName=".StagePage" >
+            android:parentActivityName=".StagePage"
+            android:theme="@android:style/Theme.Holo.Light.Dialog" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.aldrinmcadelia.myapplication.StagePage" />
+        </activity>
+        <activity
+            android:name=".Pop_upActivity"
+            android:label="@string/title_activity_pop_up"
+            >
         </activity>
     </application>
 

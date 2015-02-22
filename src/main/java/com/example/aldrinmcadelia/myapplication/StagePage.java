@@ -77,23 +77,26 @@ public class StagePage extends ActionBarActivity {
 
     public void backPage(View view){
         Intent intent = new Intent(this, MainActivity.class);
-        finish();
+
         startActivity(intent);
+        finish();
 
     }
     public void stageOne(View view){
         Intent intent = new Intent(this, Stageone.class);
-        finish();
+        //
         startActivity(intent);
+        finish();
     }
 
     public void stageTwo(View view){
         Intent intent = new Intent(this, StageTwo.class);
-        finish();
+        //
         startActivity(intent);
+        finish();
     }
     public void stageThree(View view){
         Intent intent = new Intent(this,StageThree.class);
-        finish();
+        //finish();
     }
 }

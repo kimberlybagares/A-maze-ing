@@ -1,198 +1,233 @@
 package com.example.aldrinmcadelia.myapplication;
 
-/**
- * Created by Aldrin M Cadeliña on 2/11/2015.
- */
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.InputStream;
-import java.lang.reflect.Field;
-
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
-import android.util.Log;
 
-/**
- * Maze drawn on screen, each new level is loaded once the previous level has
- * been completed.
- */
 public class Maze {
+    private int Row=1;
+    private int Column=1;
+    private int[] walls;
+    private final int offset=10;
+    private int Size=0;
+    private int top=0,
+            left=0,
+            bottom=0,
+            right=0;
 
-    // maze tile size and dimension
-    private final static int TILE_SIZE = 20;
-    private final static int MAZE_COLS = 20;
-    private final static int MAZE_ROWS = 26;
-
-    // tile types
-    public final static int PATH_TILE = 0;
-    public final static int VOID_TILE = 1;
-    public final static int EXIT_TILE = 2;
-
-    // tile colors
-    private final static int VOID_COLOR = Color.BLACK;
-
-    // maze level data
-    private static int[] mMazeData;
-
-    // number of level
-    public final static int MAX_LEVELS = 10;
-
-    // current tile attributes
-    private Rect mRect = new Rect();
-    private int mRow;
-    private int mCol;
-    private int mX;
-    private int mY;
-
-    // tile bitmaps
-    private Bitmap mImgPath;
-    private Bitmap mImgExit;
-
-    /**
-     * Maze constructor.
-     *
-     //* @param context
-     *            Application context used to load images.
-     */
-    Maze(Activity activity) {
-
-        // load bitmaps.
-        mImgPath = BitmapFactory.decodeResource(activity.getApplicationContext().getResources(),
-                R.drawable.path);
-        mImgExit = BitmapFactory.decodeResource(activity.getApplicationContext().getResources(),
-                R.drawable.exit);
+    public void setSize(int x,int y)
+    {
+        Row=y;
+        Column=x;
     }
 
-    /**
-     * Load specified maze level.
-     *
-     * @param activity
-     *           Activity controlled the maze, we use this load the level data
-     * @param newLevel
-     *            Maze level to be loaded.
-     */
-    void load(Activity activity, int newLevel) {
-        // maze data is stored in the assets folder as level1.txt, level2.txt
-        // etc....
-        String mLevel = "level" + newLevel + ".txt";
+    public void setWindow(int height, int width) {
+        Size=(height-2*getOffset())/Column>(width-2*getOffset())/Row?(width-2*getOffset())/Row:(height-2*getOffset())/Column;
+    }
 
-        InputStream is = null;
+    public void createMaze(int height, int width){
+        createWalls();
+        calculateSize(height,width);
+    }
 
-        try {
-            // construct our maze data array.
-            mMazeData = new int[MAZE_ROWS * MAZE_COLS];
-            // attempt to load maze data.
-            is = activity.getAssets().open(mLevel);
+    public void createWalls()
+    {
+        DisjSets maze=new DisjSets(Row*Column);
+        walls =new int[Row*Column];
 
-            // we need to loop through the input stream and load each tile for
-            // the current maze.
-            for (int i = 0; i < mMazeData.length; i++) {
-                // data is stored in unicode so we need to convert it.
-                mMazeData[i] = Character.getNumericValue(is.read());
-
-                // skip the "," and white space in our human readable file.
-                is.read();
-                is.read();
+        for (int i=0;i<Row*Column;i++)
+        {
+            if (i/Column==0)
+            {
+                if (i%Column==0)
+                    walls[i]=0;
+                else
+                    walls[i]=1;
             }
-        } catch (Exception e) {
-            Log.i("Maze", "load exception: " + e);
-        } finally {
-            closeStream(is);
-        }
-
-    }
-
-    /**
-     * Draw the maze.
-     *
-     * @param canvas
-     *            Canvas object to draw too.
-     * @param paint
-     *            Paint object used to draw with.
-     */
-    public void draw(Canvas canvas, Paint paint) {
-        // loop through our maze and draw each tile individually.
-        for (int i = 0; i < mMazeData.length; i++) {
-            // calculate the row and column of the current tile.
-            mRow = i / MAZE_COLS;
-            mCol = i % MAZE_COLS;
-
-            // convert the row and column into actual x,y co-ordinates so we can
-            // draw it on screen.
-            mX = mCol * TILE_SIZE;
-            mY = mRow * TILE_SIZE;
-
-            // draw the actual tile based on type.
-            if (mMazeData[i] == PATH_TILE)
-                canvas.drawBitmap(mImgPath, mX, mY, paint);
-            else if (mMazeData[i] == EXIT_TILE)
-                canvas.drawBitmap(mImgExit, mX, mY, paint);
-            else if (mMazeData[i] == VOID_TILE) {
-                // since our "void" tile is purely black lets draw a rectangle
-                // instead of using an image.
-
-                // tile attributes we are going to paint.
-                mRect.left = mX;
-                mRect.top = mY;
-                mRect.right = mX + TILE_SIZE;
-                mRect.bottom = mY + TILE_SIZE;
-
-                paint.setColor(VOID_COLOR);
-                canvas.drawRect(mRect, paint);
+            else
+            {
+                if(i%Column==0)
+                    walls[i]=2;
+                else
+                    walls[i]=3;
             }
         }
 
-    }
-
-    /**
-     * Determine which cell the marble currently occupies.
-     *
-     * @param x
-     *            Current x co-ordinate.
-     * @param y
-     *            Current y co-ordinate.
-     * @return The actual cell occupied by the marble.
-     */
-    public int getCellType(int x, int y) {
-        // convert the x,y co-ordinate into row and col values.
-        int mCellCol = x / TILE_SIZE;
-        int mCellRow = y / TILE_SIZE;
-
-        // location is the row,col coordinate converted so we know where in the
-        // maze array to look.
-        int mLocation = 0;
-
-        // if we are beyond the 1st row need to multiple by the number of
-        // columns.
-        if (mCellRow > 0)
-            mLocation = mCellRow * MAZE_COLS;
-
-        // add the column location.
-        mLocation += mCellCol;
-
-        return mMazeData[mLocation];
-    }
 
 
-    /**
-     * Closes the specified stream.
-     *
-     * @param stream
-     *            The stream to close.
-     */
-    private static void closeStream(Closeable stream) {
-        if (stream != null) {
-            try {
-                stream.close();
-            } catch (IOException e) {
-                // Ignore
+        int counter=Row*Column-1;
+
+        while(counter!=0)
+        {
+            System.out.println("counter"+counter);
+
+            int index= (int)(Math.random()*Column*Row);
+
+            System.out.println("index"+index);
+
+            switch(walls[index])
+            {
+                case 0:
+                    break;
+
+                case 1:
+                    if (maze.find(index)!=maze.find(index-1))
+                    {
+                        maze.union(maze.find(index),maze.find(index-1));
+                        counter--;
+                        walls[index]-=1;
+
+                    }
+                    break;
+
+                case 2:
+                    if (maze.find(index)!=maze.find(index-Column))
+                    {
+                        maze.union(maze.find(index),maze.find(index-Column));
+                        counter--;
+                        walls[index]-=2;
+
+                    }
+                    break;
+
+                case 3:
+                    if (Math.random()>0.5)
+                    {
+                        if (maze.find(index)!=maze.find(index-1))
+                        {
+                            maze.union(maze.find(index),maze.find(index-1));
+                            counter--;
+                            walls[index]-=1;
+
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        if (maze.find(index)!=maze.find(index-Column))
+                        {
+                            maze.union(maze.find(index),maze.find(index-Column));
+                            counter--;
+                            walls[index]-=2;
+
+                        }
+                        break;
+                    }
             }
         }
+    }
+
+    public void calculateSize(int height, int width){
+        top=0+getOffset();
+        left=(height-Size*Column-2*getOffset())/2+getOffset();// y direction
+        bottom=Size*Row+top;
+        right=Size*Column+left;
+    }
+
+    public int getwalls(int x)
+    {
+        return walls[x];
+    }
+
+    public int getRow()
+    {
+        return Row;
+    }
+
+    public int getColumn()
+    {
+        return Column;
+    }
+
+    public int getSize() {
+        return Size;
+    }
+
+    public int getTop() {
+        return top;
+    }
+
+    public int getLeft() {
+        return left;
+    }
+
+    public int getBottom() {
+        return bottom;
+    }
+
+    public int getRight() {
+        return right;
+    }
+
+    public int getOffset() {
+        return offset;
+    }
+
+    class DisjSets
+    {
+        public DisjSets( int numElements )
+        {
+            s = new int [ numElements ];
+            for( int i = 0; i < s.length; i++ )
+                s[ i ] = -1;
+        }
+
+
+        public void union( int root1, int root2 )
+        {
+            s[ root2 ] = root1;
+        }
+
+        public int find( int x )
+        {
+            if( s[ x ] < 0 )
+                return x;
+            else
+                return find( s[ x ] );
+        }
+
+        private int [] s;
+    }
+
+    public void drawMaze(Canvas canvas, Paint mPaint){
+        for(int i=0;i<Row*Column;i++)
+        {
+            int x=Size*(i/Column)+top;
+            int y= Size*(i%Column)+left;
+            switch(getwalls(i))
+            {
+                case 0:
+                    break;
+
+                case 1:
+                    canvas.drawLine(x,y,x+Size,y, mPaint);
+                    canvas.save();
+                    break;
+
+                case 2:
+                    canvas.drawLine(x,y,x,y+Size, mPaint);
+                    canvas.save();
+                    break;
+
+                case 3:
+                    canvas.drawLine(x,y,x,y+Size, mPaint);
+                    canvas.save();
+                    canvas.drawLine(x,y,x+Size,y, mPaint);
+                    canvas.save();
+                    break;
+            }
+
+        }
+
+
+        canvas.drawLine(top,left,top,right, mPaint);
+        canvas.save();
+        canvas.drawLine(top,left,bottom,left, mPaint);
+        canvas.save();
+        canvas.drawLine(bottom,left,bottom,right-Size, mPaint);
+        canvas.save();
+        canvas.drawLine(top,right,bottom-Size,right, mPaint);
+        canvas.save();
+        canvas.restore();
     }
 }
+
