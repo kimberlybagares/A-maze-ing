@@ -61,7 +61,7 @@ public class StageTwo extends Activity implements SensorEventListener
         );
         GameButtons.setLayoutParams(params);
         GameButtons.addView(button1);
-        b1.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,RelativeLayout.TRUE);
+        b1.addRule(RelativeLayout.ALIGN_PARENT_LEFT,RelativeLayout.TRUE);
         b1.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM,RelativeLayout.TRUE);
         button1.setLayoutParams(b1);
         game.addView(newView);
