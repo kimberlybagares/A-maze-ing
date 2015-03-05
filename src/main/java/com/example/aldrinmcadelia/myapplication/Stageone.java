@@ -262,7 +262,7 @@ public class Stageone extends Activity implements SensorEventListener
             height=getHeight();
             width=getWidth();
             numMaze=new Maze();
-            numMaze.setSize(10, 10);
+            numMaze.setSize(5, 5);
             numMaze.setWindow(height, width);
             numMaze.createMaze(height,width);
             ball = new BallClass();
