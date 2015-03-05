@@ -75,6 +75,7 @@
             android:drawableBottom="@drawable/lock"
             android:id="@+id/four"
             android:layout_gravity="left|center_vertical"
+			android:onClick="stageFour"
             android:background="@drawable/blue"/>
 
         <Button
@@ -86,6 +87,7 @@
             android:drawableBottom="@drawable/lock"
             android:id="@+id/five"
             android:layout_gravity="center"
+			android:onClick="stageFive"
             android:background="@drawable/blue"/>
 
         <Button
@@ -97,6 +99,7 @@
             android:drawableBottom="@drawable/lock"
             android:id="@+id/six"
             android:layout_gravity="right|center_vertical"
+			android:onClick="stageSix"
             android:background="@drawable/blue"/>
 
         <Button
@@ -108,6 +111,7 @@
             android:drawableBottom="@drawable/lock"
             android:id="@+id/seven"
             android:layout_gravity="left|bottom"
+			android:onClick="stageSeven"
             android:background="@drawable/blue"/>
 
         <Button
@@ -119,6 +123,7 @@
             android:drawableBottom="@drawable/lock"
             android:id="@+id/eight"
             android:layout_gravity="center_horizontal|bottom"
+			android:onClick="stageEight"
             android:background="@drawable/blue"/>
 
         <Button
@@ -130,6 +135,7 @@
             android:drawableBottom="@drawable/lock"
             android:id="@+id/nine"
             android:layout_gravity="right|bottom"
+			android:onClick="stageNine"
             android:background="@drawable/blue"/>
 
     </FrameLayout>
