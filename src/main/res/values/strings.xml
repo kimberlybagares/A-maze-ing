@@ -19,7 +19,12 @@
     <string name="title_activity_game_over">GameOver</string>
 
     <string name="title_activity_stage_three">StageThree</string>
-	
+	<string name="title_activity_stage_four">StageFour</string>
+    <string name="title_activity_stage_five">StageFive</string>
+    <string name="title_activity_stage_six">StageSix</string>
+    <string name="title_activity_stage_seven">StageSeven</string>
+    <string name="title_activity_stage_eight">StageEight</string>
+    <string name="title_activity_stage_nine">StageNine</string>
     <string name="title_activity_pop_up">Pop_upActivity</string>
     <string name="id">Pause</string>
     <string name="title_activity_finish">FinishActivity</string>
