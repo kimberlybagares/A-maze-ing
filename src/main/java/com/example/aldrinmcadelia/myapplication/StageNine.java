@@ -262,7 +262,7 @@ public class StageNine extends Activity implements SensorEventListener
             height=getHeight();
             width=getWidth();
             numMaze=new Maze();
-            numMaze.setSize(13, 13);
+            numMaze.setSize(20, 20);
             numMaze.setWindow(height, width);
             numMaze.createMaze(height,width);
             ball = new BallClass();
@@ -376,14 +376,20 @@ public class StageNine extends Activity implements SensorEventListener
                 mHolder.unlockCanvasAndPost(canvas);//unlock the Canvas and post.
             }
             if(gameOver!=true){
-
-                Intent finish = new Intent(com.example.aldrinmcadelia.myapplication.StageNine.this,FinishActivity.class);
-                finish.putExtra("finish",timer);
-                finish.putExtra("stage", 9);
-                finish.putExtra("bestTime", Btime);
-
-                startActivity(finish);
-
+                if(timer<Btime){
+                    Intent finish = new Intent(com.example.aldrinmcadelia.myapplication.StageNine.this,FinishActivity.class);
+                    finish.putExtra("finish",timer);
+                    finish.putExtra("stage", 2);
+                    finish.putExtra("bestTime", timer);
+                    startActivity(finish);
+                }
+                if(timer>Btime){
+                    Intent finish = new Intent(com.example.aldrinmcadelia.myapplication.StageNine.this,FinishActivity.class);
+                    finish.putExtra("finish",timer);
+                    finish.putExtra("stage", 2);
+                    finish.putExtra("bestTime", Btime);
+                    startActivity(finish);
+                }
             }
             if(gameOver==true){
                 finish();

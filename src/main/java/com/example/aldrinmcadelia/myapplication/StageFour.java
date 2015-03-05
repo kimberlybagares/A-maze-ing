@@ -262,7 +262,7 @@ public class StageFour extends Activity implements SensorEventListener
             height=getHeight();
             width=getWidth();
             numMaze=new Maze();
-            numMaze.setSize(8, 8);
+            numMaze.setSize(16, 16);
             numMaze.setWindow(height, width);
             numMaze.createMaze(height,width);
             ball = new BallClass();
@@ -376,13 +376,20 @@ public class StageFour extends Activity implements SensorEventListener
                 mHolder.unlockCanvasAndPost(canvas);//unlock the Canvas and post.
             }
             if(gameOver!=true){
-
-                Intent finish = new Intent(com.example.aldrinmcadelia.myapplication.StageFour.this,FinishActivity.class);
-                finish.putExtra("finish",timer);
-                finish.putExtra("stage", 4);
-                finish.putExtra("bestTime", Btime);
-
-                startActivity(finish);
+                if(timer<Btime){
+                    Intent finish = new Intent(com.example.aldrinmcadelia.myapplication.StageFour.this,FinishActivity.class);
+                    finish.putExtra("finish",timer);
+                    finish.putExtra("stage", 2);
+                    finish.putExtra("bestTime", timer);
+                    startActivity(finish);
+                }
+                if(timer>Btime){
+                    Intent finish = new Intent(com.example.aldrinmcadelia.myapplication.StageFour.this,FinishActivity.class);
+                    finish.putExtra("finish",timer);
+                    finish.putExtra("stage", 2);
+                    finish.putExtra("bestTime", Btime);
+                    startActivity(finish);
+                }
 
             }
             if(gameOver==true){
@@ -422,61 +429,6 @@ public class StageFour extends Activity implements SensorEventListener
         pause = false;
     }
 
-    public void finishGame(){
-        gameIsFinish = new RelativeLayout(this);
-        TextView Finish = new TextView(this);
-        TextView Time = new TextView(this);
-        Button next = new Button(this);
-
-        timeStr = new StringBuffer();
-
-        timeStr.append("Time: "+timer/1000%60+"."+timer/100%10+"s");
-
-
-
-        gameIsFinish.setBackgroundColor(Color.RED);
-        Finish.setTextColor(Color.WHITE);
-        Time.setTextColor(Color.WHITE);
-        next.setTextColor(Color.WHITE);
-        next.setBackgroundColor(Color.BLUE);
-
-        Finish.setText("Touch Down!");
-        Time.setText(timeStr);
-        next.setText("->>>>");
-
-
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.FILL_PARENT,
-                RelativeLayout.LayoutParams.FILL_PARENT
-        );
-        RelativeLayout.LayoutParams p1 = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT
-        );
-        RelativeLayout.LayoutParams p2 = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT
-        );
-
-        p1.addRule(RelativeLayout.CENTER_IN_PARENT);
-        p2.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        p2.addRule(RelativeLayout.CENTER_IN_PARENT);
-
-        gameIsFinish.setLayoutParams(params);
-        gameIsFinish.addView(Finish);
-        gameIsFinish.addView(Time);
-        gameIsFinish.addView(next);
-        gameIsFinish.setPadding(5,5,5,5);
-
-        Finish.setLayoutParams(p1);
-        Time.setLayoutParams(p1);
-        next.setLayoutParams(p2);
-
-        NextStage = new PopupWindow(gameIsFinish,300,400,true);
-
-        NextStage.showAtLocation(gameIsFinish,Gravity.CENTER,0,0);
-
-    }
 
 }
 

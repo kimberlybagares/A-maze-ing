@@ -54,7 +54,7 @@
             android:name=".StageThree"
             android:label="@string/title_activity_stage_three"
             android:parentActivityName=".StagePage"
-            android:theme="@android:style/Theme.Holo.Light.Dialog" >
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.aldrinmcadelia.myapplication.StagePage" />
@@ -63,7 +63,7 @@
             android:name=".StageFour"
             android:label="@string/title_activity_stage_four"
             android:parentActivityName=".StagePage"
-            android:theme="@android:style/Theme.Holo.Light.Dialog" >
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.aldrinmcadelia.myapplication.StagePage" />
@@ -72,7 +72,7 @@
             android:name=".StageFive"
             android:label="@string/title_activity_stage_five"
             android:parentActivityName=".StagePage"
-            android:theme="@android:style/Theme.Holo.Light.Dialog" >
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.aldrinmcadelia.myapplication.StagePage" />
@@ -81,7 +81,7 @@
             android:name=".StageSix"
             android:label="@string/title_activity_stage_six"
             android:parentActivityName=".StagePage"
-            android:theme="@android:style/Theme.Holo.Light.Dialog" >
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.aldrinmcadelia.myapplication.StagePage" />
@@ -90,7 +90,7 @@
             android:name=".StageSeven"
             android:label="@string/title_activity_stage_seven"
             android:parentActivityName=".StagePage"
-            android:theme="@android:style/Theme.Holo.Light.Dialog" >
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.aldrinmcadelia.myapplication.StagePage" />
@@ -99,7 +99,7 @@
             android:name=".StageEight"
             android:label="@string/title_activity_stage_eight"
             android:parentActivityName=".StagePage"
-            android:theme="@android:style/Theme.Holo.Light.Dialog" >
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.aldrinmcadelia.myapplication.StagePage" />
@@ -108,7 +108,7 @@
             android:name=".StageNine"
             android:label="@string/title_activity_stage_nine"
             android:parentActivityName=".StagePage"
-            android:theme="@android:style/Theme.Holo.Light.Dialog" >
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.aldrinmcadelia.myapplication.StagePage" />

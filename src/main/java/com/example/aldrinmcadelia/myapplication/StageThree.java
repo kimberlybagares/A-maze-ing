@@ -97,7 +97,7 @@ public class StageThree extends Activity implements SensorEventListener
         Pause.setTextColor(Color.WHITE);
         MainBack.setTextColor(Color.WHITE);
 
-        StageName.setText("Stage 3");
+        StageName.setText("Stage 1");
         Pause.setText("Pause");
         MainBack.setText("Stages");
         Yes.setText("Yes!");
@@ -232,7 +232,7 @@ public class StageThree extends Activity implements SensorEventListener
     private int loadSavedPreferences() {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(this);
-        return sharedPreferences.getInt("Btime", 86400000);
+        return sharedPreferences.getInt("Stage3Time", 50000);
     }
 
     private void savePreferences(String key, int value) {
@@ -262,7 +262,7 @@ public class StageThree extends Activity implements SensorEventListener
             height=getHeight();
             width=getWidth();
             numMaze=new Maze();
-            numMaze.setSize(7, 7);
+            numMaze.setSize(14, 14);
             numMaze.setWindow(height, width);
             numMaze.createMaze(height,width);
             ball = new BallClass();
@@ -326,14 +326,14 @@ public class StageThree extends Activity implements SensorEventListener
                     nPaint.setTypeface(fontStyle);
 
                     canvas.drawText("Stage 3", (width-1*str1.toString().length())/(float)20, (height-numMaze.getRight()+numMaze.getOffset())/(float)2, nPaint);
-                    canvas.drawText("Limit: 30s", (width-1*str1.toString().length())/(float)1.5, (height-numMaze.getRight()+numMaze.getOffset())/(float)1.5, mPaint);
+                    canvas.drawText("Limit: 50s", (width-1*str1.toString().length())/(float)1.5, (height-numMaze.getRight()+numMaze.getOffset())/(float)1.5, mPaint);
                     canvas.drawText(str2.toString(), (width-12*str2.toString().length())/2, (height+numMaze.getRight()+numMaze.getOffset())/(float)2.1, mPaint);
                     numMaze.drawMaze(canvas, mPaint);
                     mPaint.setColor(Color.CYAN);//set pen color
                     ball.drawBall(canvas, mPaint);
                     if(pause!=true){
                         Thread.sleep(33);
-                        if(timer < 30000){
+                        if(timer < 50000){
                             ball.setxAcc(xSensor);
                             ball.setyAcc(ySensor);
                             ball.updatePosition(numMaze);
@@ -341,7 +341,7 @@ public class StageThree extends Activity implements SensorEventListener
                         }
 
                     }
-                    if(timer>30000){
+                    if(timer>50000){
                         ball.setI(numMaze.getRow()-1);
                         ball.setJ(numMaze.getColumn()-1);
                         gameOver = true;
@@ -354,40 +354,53 @@ public class StageThree extends Activity implements SensorEventListener
             }
             canvas = mHolder.lockCanvas();//get Canvas
             if (canvas!=null){
-                canvas.drawColor(Color.BLACK);//Set background color
+                canvas.drawColor(Color.BLACK);
                 Paint mPaint = new Paint();
-                mPaint.setColor(Color.BLACK);//set pen color
+                mPaint.setColor(Color.BLACK);
 
                 str1=new StringBuffer();
                 str2=new StringBuffer();
-                if (best==false && timer<Btime){//it's in while loop, so the comparison will be on-going, so add a flag.
+
+                if (best==false && timer<Btime){
                     best=true;
-                    savePreferences("Btime",timer);
+                    savePreferences("Stage3Time",timer);
                 }
+
                 if (best==true)
                     str1.append("New best score!!");
+
                 str2.append("Your Time = "+timer/1000%(60*60*60)/(60*60)+":"+timer/1000%(60*60)/60+":"+timer/1000%60+"."+timer/100%10);
                 mPaint.setTextSize(24);
-                //canvas.drawText(str1.toString(), (width-12*str1.toString().length())/2, (height-numMaze.getRight()+numMaze.getOffset())/2, mPaint);
+
                 canvas.drawText(str2.toString(), (width-12*str2.toString().length())/2, (height+numMaze.getRight()+numMaze.getOffset())/2, mPaint);
+
                 numMaze.drawMaze(canvas, mPaint);
-                mPaint.setColor(Color.CYAN);//set pen color
+                mPaint.setColor(Color.CYAN);
                 ball.drawBall(canvas, mPaint);
-                mHolder.unlockCanvasAndPost(canvas);//unlock the Canvas and post.
+                mHolder.unlockCanvasAndPost(canvas);
             }
             if(gameOver!=true){
-
-                Intent finish = new Intent(com.example.aldrinmcadelia.myapplication.StageThree.this,FinishActivity.class);
-                finish.putExtra("finish",timer);
-                finish.putExtra("stage", 3);
-                finish.putExtra("bestTime", Btime);
-
-                startActivity(finish);
+                if(timer<Btime){
+                    Intent finish = new Intent(com.example.aldrinmcadelia.myapplication.StageThree.this,FinishActivity.class);
+                    finish.putExtra("finish",timer);
+                    finish.putExtra("stage", 3);
+                    finish.putExtra("bestTime", timer);
+                    startActivity(finish);
+                }
+                if(timer>Btime){
+                    Intent finish = new Intent(com.example.aldrinmcadelia.myapplication.StageThree.this,FinishActivity.class);
+                    finish.putExtra("finish",timer);
+                    finish.putExtra("stage", 3);
+                    finish.putExtra("bestTime", Btime);
+                    startActivity(finish);
+                }
 
             }
             if(gameOver==true){
                 finish();
-                startActivity(new Intent(com.example.aldrinmcadelia.myapplication.StageThree.this,GameOver.class));
+                Intent intent = new Intent(com.example.aldrinmcadelia.myapplication.StageThree.this,GameOver.class);
+                intent.putExtra("stageNo",3);
+                startActivity(intent);
             }
         }
     }
@@ -420,62 +433,6 @@ public class StageThree extends Activity implements SensorEventListener
     }
     public void onResumeButton(){
         pause = false;
-    }
-
-    public void finishGame(){
-        gameIsFinish = new RelativeLayout(this);
-        TextView Finish = new TextView(this);
-        TextView Time = new TextView(this);
-        Button next = new Button(this);
-
-        timeStr = new StringBuffer();
-
-        timeStr.append("Time: "+timer/1000%60+"."+timer/100%10+"s");
-
-
-
-        gameIsFinish.setBackgroundColor(Color.RED);
-        Finish.setTextColor(Color.WHITE);
-        Time.setTextColor(Color.WHITE);
-        next.setTextColor(Color.WHITE);
-        next.setBackgroundColor(Color.BLUE);
-
-        Finish.setText("Touch Down!");
-        Time.setText(timeStr);
-        next.setText("->>>>");
-
-
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.FILL_PARENT,
-                RelativeLayout.LayoutParams.FILL_PARENT
-        );
-        RelativeLayout.LayoutParams p1 = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT
-        );
-        RelativeLayout.LayoutParams p2 = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT
-        );
-
-        p1.addRule(RelativeLayout.CENTER_IN_PARENT);
-        p2.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        p2.addRule(RelativeLayout.CENTER_IN_PARENT);
-
-        gameIsFinish.setLayoutParams(params);
-        gameIsFinish.addView(Finish);
-        gameIsFinish.addView(Time);
-        gameIsFinish.addView(next);
-        gameIsFinish.setPadding(5,5,5,5);
-
-        Finish.setLayoutParams(p1);
-        Time.setLayoutParams(p1);
-        next.setLayoutParams(p2);
-
-        NextStage = new PopupWindow(gameIsFinish,300,400,true);
-
-        NextStage.showAtLocation(gameIsFinish,Gravity.CENTER,0,0);
-
     }
 
 }
