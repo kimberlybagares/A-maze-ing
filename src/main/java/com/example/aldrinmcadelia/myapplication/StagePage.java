@@ -71,19 +71,57 @@ public class StagePage extends Activity {
     }
     public void stageOne(View view){
         Intent intent = new Intent(this, Stageone.class);
-        //
+        
         startActivity(intent);
         finish();
     }
 
     public void stageTwo(View view){
         Intent intent = new Intent(this, StageTwo.class);
-        //
+        
         startActivity(intent);
         finish();
     }
     public void stageThree(View view){
-        Intent intent = new Intent(this,StageThree.class);
-        //finish();
+        Intent intent = new Intent(this, StageThree.class);
+
+        startActivity(intent);
+        finish();
+    }
+    public void stageFour(View view){
+        Intent intent = new Intent(this, StageFour.class);
+
+        startActivity(intent);
+        finish();
+    }
+    public void stageFive(View view){
+        Intent intent = new Intent(this, StageFive.class);
+
+        startActivity(intent);
+        finish();
+    }
+    public void stageSix(View view){
+        Intent intent = new Intent(this, StageSix.class);
+
+        startActivity(intent);
+        finish();
+    }
+    public void stageSeven(View view){
+        Intent intent = new Intent(this, StageSeven.class);
+
+        startActivity(intent);
+        finish();
+    }
+    public void stageEight(View view){
+        Intent intent = new Intent(this, StageEight.class);
+
+        startActivity(intent);
+        finish();
+    }
+    public void stageNine(View view){
+        Intent intent = new Intent(this, StageNine.class);
+
+        startActivity(intent);
+        finish();
     }
 }
