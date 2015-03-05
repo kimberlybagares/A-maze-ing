@@ -262,7 +262,7 @@ public class StageTwo extends Activity implements SensorEventListener
             height=getHeight();
             width=getWidth();
             numMaze=new Maze();
-            numMaze.setSize(5, 5);
+            numMaze.setSize(6, 6);
             numMaze.setWindow(height, width);
             numMaze.createMaze(height,width);
             ball = new BallClass();
