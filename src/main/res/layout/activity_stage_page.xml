@@ -1,15 +1,12 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
-    android:layout_gravity="center"
-    tools:context="com.example.aldrinmcadelia.myapplication2.StagePage"
-    android:weightSum="1"
     android:background="#000000"
-    >
+    tools:context="com.example.aldrinmcadelia.myapplication2.StagePage">
+
     <TextView
         android:text="a Maze ing Stages"
         android:layout_width="wrap_content"
@@ -18,17 +15,21 @@
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:id="@+id/select_stage"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/linearLayout"
-        android:layout_alignEnd="@+id/linearLayout"
-        android:layout_gravity="left" />
+        android:layout_gravity="left"
+        android:layout_above="@+id/frameLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="50dp" />
 
 
     <FrameLayout
         android:layout_width="251dp"
         android:layout_height="243dp"
-        android:layout_weight="0.25"
-        android:layout_gravity="center">
+        android:layout_weight="0.47"
+        android:layout_gravity="center"
+        android:id="@+id/frameLayout"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
 
         <Button
             android:layout_width="70dp"
@@ -51,7 +52,7 @@
             android:drawableBottom="@drawable/lock"
             android:layout_gravity="center_horizontal|top"
             android:onClick="stageTwo"
-            android:background="@drawable/blue"/>
+            android:background="@drawable/selectcolor"/>
 
         <Button
             android:layout_width="70dp"
@@ -143,8 +144,14 @@
         android:id="@+id/back_main"
         android:layout_gravity="bottom|end"
         android:onClick="backPage"
-        android:background="@drawable/blue"/>
+        android:background="@drawable/selectcolor"
+        android:layout_marginTop="48dp"
+        android:layout_below="@+id/frameLayout"
+        android:layout_alignRight="@+id/frameLayout"
+        android:layout_alignEnd="@+id/frameLayout" />
 
 
-</LinearLayout>
+    </RelativeLayout>
+
+
 

@@ -14,7 +14,7 @@ public class BallClass {
     private float yAcc=0f;
     private float radius=0f;
     private float top=0f, bottom=0f, left=0f, right=0f;
-    private float slowDown=10f;
+    private float slowDown=5f;
     private int i=0;
     private int j=0;
 
@@ -24,6 +24,14 @@ public class BallClass {
 
     public int getJ() {
         return j;
+    }
+
+    public void setI(int i){
+        this.i = i;
+    }
+
+    public void setJ(int j){
+        this.j = j;
     }
 
     public float getxCoor() {

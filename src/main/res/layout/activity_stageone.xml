@@ -6,22 +6,6 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.aldrinmcadelia.myapplication.Stageone">
 
-    <TextView
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:id="@+id/timer"
-        />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button"
-        android:layout_below="@+id/timer"
-        android:layout_toRightOf="@+id/timer"
-        android:layout_toEndOf="@+id/timer"
-        android:layout_marginTop="109dp" />
 
 </RelativeLayout>
