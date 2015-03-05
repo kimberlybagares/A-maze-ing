@@ -306,7 +306,7 @@ public class StageTwo extends Activity implements SensorEventListener
                     Paint mPaint = new Paint();
                     Paint nPaint = new Paint();
 
-                    mPaint.setColor(Color.WHITE);//set pen color
+                    mPaint.setColor(Color.BLUE);//set pen color
                     mPaint.setStrokeJoin(Paint.Join.MITER);
                     mPaint.setStrokeWidth(3f);
 
