@@ -2,12 +2,14 @@ package com.example.aldrinmcadelia.myapplication;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 public class GameOver extends Activity {
@@ -16,8 +18,17 @@ public class GameOver extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_over);
+
+        String fontPath = "Lobster_1.3.otf";
+
+        Typeface fontStyle = Typeface.createFromAsset(getAssets(),fontPath);
+
         final Button Restart = (Button) findViewById(R.id.Restart);
         Button Quit = (Button) findViewById(R.id.Quit);
+
+        TextView gameOverText = (TextView) findViewById(R.id.GameOverText);
+
+        gameOverText.setTypeface(fontStyle);
 
         Intent intent = getIntent();
         final int stageNumber = intent.getIntExtra("stageNo",0);

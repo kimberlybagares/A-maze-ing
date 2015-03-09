@@ -4,6 +4,7 @@ package com.example.aldrinmcadelia.myapplication;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,12 +19,18 @@ import java.lang.reflect.Type;
 
 public class AboutPage extends Activity {
 
+    MediaPlayer OurSong;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_page);
 
-        String fontPath = "black_jack.ttf";
+        OurSong = MediaPlayer.create(AboutPage.this,R.raw.ants);
+        OurSong.setLooping(true);
+        OurSong.start();
+
+        String fontPath = "Lobster_1.3.otf";
         String fontPath2 = "GoodDog.otf";
 
         TextView about = (TextView) findViewById(R.id.aboutText);
@@ -31,8 +38,8 @@ public class AboutPage extends Activity {
         TextView back = (TextView) findViewById(R.id.back_main);
 
         Typeface aboutView = Typeface.createFromAsset(getAssets(), fontPath);
-        Typeface aboutView2 = Typeface.createFromAsset(getAssets(),fontPath2);
-        Typeface back_main = Typeface.createFromAsset(getAssets(), fontPath2);
+        Typeface aboutView2 = Typeface.createFromAsset(getAssets(),fontPath);
+        Typeface back_main = Typeface.createFromAsset(getAssets(), fontPath);
 
         about.setTypeface(aboutView);
         about2.setTypeface(aboutView2);
@@ -64,6 +71,12 @@ public class AboutPage extends Activity {
         setIntent.addCategory(Intent.CATEGORY_HOME);
         setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(setIntent);
+    }
+
+    protected void onPause(){
+        super.onPause();
+        OurSong.release();
+        finish();
     }
 
 }

@@ -14,7 +14,7 @@
         android:textStyle="bold"
         android:textSize="50dp"
         android:textColor="#FFFFFF"
-        android:id="@+id/aboutText"
+        android:id="@+id/GameOverText"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="102dp" />
@@ -30,7 +30,7 @@
         android:layout_gravity="right"
         android:layout_column="31"
         android:background="@drawable/selectcolor"
-        android:layout_below="@+id/aboutText"
+        android:layout_below="@+id/GameOverText"
         android:layout_alignLeft="@+id/Quit"
         android:layout_alignStart="@+id/Quit" />
 

@@ -14,7 +14,7 @@
         android:layout_centerHorizontal="true"
 
         android:textStyle="bold"
-        android:textSize="30dp"
+        android:textSize="32dp"
         android:textColor="#FFFFFF"
         android:layout_marginTop="97dp" />
 
@@ -42,7 +42,8 @@
     <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:text="->>>>"
+        android:text=">>>>"
+        android:textSize="30sp"
         android:textColor="#FFFFFF"
         android:id="@+id/next"
         android:layout_gravity="right"

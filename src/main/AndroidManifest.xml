@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.aldrinmcadelia.myapplication" >
+
+    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -20,6 +25,7 @@
         <activity
             android:name=".StagePage"
             android:label="@string/title_activity_stage_page"
+            android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -28,6 +34,7 @@
         <activity
             android:name=".AboutPage"
             android:label="@string/title_activity_about_page"
+            android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -36,7 +43,10 @@
         <activity
             android:name=".Stageone"
             android:label="@string/title_activity_stageone"
+            android:screenOrientation="portrait"
             android:parentActivityName=".StagePage" >
+            <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.aldrinmcadelia.myapplication.StagePage" />
@@ -53,17 +63,17 @@
         <activity
             android:name=".StageThree"
             android:label="@string/title_activity_stage_three"
-            android:parentActivityName=".StagePage"
-            >
+            android:screenOrientation="portrait"
+            android:parentActivityName=".StagePage" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.aldrinmcadelia.myapplication.StagePage" />
         </activity>
-		<activity
+        <activity
             android:name=".StageFour"
             android:label="@string/title_activity_stage_four"
-            android:parentActivityName=".StagePage"
-            >
+            android:screenOrientation="portrait"
+            android:parentActivityName=".StagePage" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.aldrinmcadelia.myapplication.StagePage" />
@@ -71,8 +81,8 @@
         <activity
             android:name=".StageFive"
             android:label="@string/title_activity_stage_five"
-            android:parentActivityName=".StagePage"
-            >
+            android:screenOrientation="portrait"
+            android:parentActivityName=".StagePage" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.aldrinmcadelia.myapplication.StagePage" />
@@ -80,8 +90,8 @@
         <activity
             android:name=".StageSix"
             android:label="@string/title_activity_stage_six"
-            android:parentActivityName=".StagePage"
-            >
+            android:screenOrientation="portrait"
+            android:parentActivityName=".StagePage" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.aldrinmcadelia.myapplication.StagePage" />
@@ -89,8 +99,8 @@
         <activity
             android:name=".StageSeven"
             android:label="@string/title_activity_stage_seven"
-            android:parentActivityName=".StagePage"
-            >
+            android:screenOrientation="portrait"
+            android:parentActivityName=".StagePage" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.aldrinmcadelia.myapplication.StagePage" />
@@ -98,8 +108,8 @@
         <activity
             android:name=".StageEight"
             android:label="@string/title_activity_stage_eight"
-            android:parentActivityName=".StagePage"
-            >
+            android:screenOrientation="portrait"
+            android:parentActivityName=".StagePage" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.aldrinmcadelia.myapplication.StagePage" />
@@ -107,8 +117,8 @@
         <activity
             android:name=".StageNine"
             android:label="@string/title_activity_stage_nine"
-            android:parentActivityName=".StagePage"
-            >
+            android:screenOrientation="portrait"
+            android:parentActivityName=".StagePage" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.aldrinmcadelia.myapplication.StagePage" />
@@ -119,11 +129,22 @@
         </activity>
         <activity
             android:name=".FinishActivity"
-            android:label="@string/title_activity_finish" >
+            android:label="@string/title_activity_finish"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".GameOver"
-            android:label="@string/title_activity_game_over" >
+            android:label="@string/title_activity_game_over"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".BestTime"
+            android:label="@string/title_activity_best_time"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.aldrinmcadelia.myapplication.MainActivity" />
         </activity>
     </application>
 

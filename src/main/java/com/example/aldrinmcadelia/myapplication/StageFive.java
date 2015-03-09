@@ -52,7 +52,7 @@ public class StageFive extends Activity implements SensorEventListener
     private boolean gameOver = false;
     private boolean pause = false;
 
-    String FontPath = "black_jack.ttf";
+    String FontPath = "Lobster_1.3.otf";
 
     MyView newView;
     FrameLayout game;
@@ -77,6 +77,14 @@ public class StageFive extends Activity implements SensorEventListener
         PauseLayout = new RelativeLayout(this);
         BackToStagePage = new RelativeLayout(this);
 
+        Drawable colorBlue = this.getResources().getDrawable(R.drawable.selectcolor);
+        Drawable colorBlue2 = this.getResources().getDrawable(R.drawable.selectcolor);
+        Drawable colorBlue3 = this.getResources().getDrawable(R.drawable.selectcolor);
+        Drawable colorBlue4 = this.getResources().getDrawable(R.drawable.selectcolor);
+        Drawable colorBlue5 = this.getResources().getDrawable(R.drawable.selectcolor);
+        Drawable colorBlack = this.getResources().getDrawable(R.drawable.blueborder);
+        Typeface fontStyle = Typeface.createFromAsset(getAssets(),FontPath);
+
         TextView StageName = new TextView(this);
         TextView Text = new TextView(this);
         TextView Question = new TextView(this);
@@ -87,15 +95,21 @@ public class StageFive extends Activity implements SensorEventListener
         Button Yes = new Button(this);
         Button No = new Button(this);
 
-        Pause.setBackgroundColor(Color.BLUE);
-        MainBack.setBackgroundColor(Color.BLUE);
-        Yes.setBackgroundColor(Color.BLUE);
-        No.setBackgroundColor(Color.BLUE);
+        Pause.setBackground(colorBlue2);
+        MainBack.setBackground(colorBlue3);
+        Resume.setBackground(colorBlue4);
+        Yes.setBackground(colorBlue5);
+        No.setBackground(colorBlue);
+
 
         StageName.setTextColor(Color.WHITE);
         Text.setTextColor(Color.WHITE);
         Pause.setTextColor(Color.WHITE);
+        Resume.setTextColor(Color.WHITE);
         MainBack.setTextColor(Color.WHITE);
+        Question.setTextColor(Color.WHITE);
+        Yes.setTextColor(Color.WHITE);
+        No.setTextColor(Color.WHITE);
 
         StageName.setText("Stage 5");
         Pause.setText("Pause");
@@ -106,9 +120,18 @@ public class StageFive extends Activity implements SensorEventListener
         Resume.setText("Resume");
         Question.setText("Are you sure you want to leave this stage?");
 
+        StageName.setTypeface(fontStyle);
+        Pause.setTypeface(fontStyle);
+        MainBack.setTypeface(fontStyle);
+        Yes.setTypeface(fontStyle);
+        No.setTypeface(fontStyle);
+        Text.setTypeface(fontStyle);
+        Resume.setTypeface(fontStyle);
+        Question.setTypeface(fontStyle);
+
         StageName.setTextSize(20);
-        Text.setTextSize(20);
-        Question.setTextSize(15);
+        Text.setTextSize(25);
+        Question.setTextSize(20);
 
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.FILL_PARENT,
@@ -145,9 +168,12 @@ public class StageFive extends Activity implements SensorEventListener
         b3.addRule(RelativeLayout.CENTER_IN_PARENT,RelativeLayout.TRUE);
         b4.addRule(RelativeLayout.CENTER_HORIZONTAL,RelativeLayout.TRUE);
         b5.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,RelativeLayout.TRUE);
+        b5.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM,RelativeLayout.TRUE);
         b5.addRule(RelativeLayout.CENTER_IN_PARENT,RelativeLayout.TRUE);
         b6.addRule(RelativeLayout.ALIGN_PARENT_LEFT,RelativeLayout.TRUE);
+        b6.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM,RelativeLayout.TRUE);
         b6.addRule(RelativeLayout.CENTER_IN_PARENT,RelativeLayout.TRUE);
+
 
 
 
@@ -155,10 +181,10 @@ public class StageFive extends Activity implements SensorEventListener
         GameButtons.addView(Pause);
         GameButtons.addView(MainBack);
         PauseLayout.setLayoutParams(params);
-        PauseLayout.setBackgroundColor(Color.RED);
+        PauseLayout.setBackground(colorBlack);
         BackToStagePage.setLayoutParams(params);
-        BackToStagePage.setBackgroundColor(Color.RED);
-        BackToStagePage.setPadding(5,5,5,5);
+        BackToStagePage.setBackground(colorBlack);
+        BackToStagePage.setPadding(20,20,20,20);
 
         Pause.setLayoutParams(b1);
         MainBack.setLayoutParams(b2);
@@ -178,8 +204,8 @@ public class StageFive extends Activity implements SensorEventListener
         BackToStagePage.addView(Yes);
         BackToStagePage.addView(No);
 
-        PauseWindow = new PopupWindow(PauseLayout,300,200,true);
-        ToStagePage = new PopupWindow(BackToStagePage,300,200,true);
+        PauseWindow = new PopupWindow(PauseLayout,400,200,true);
+        ToStagePage = new PopupWindow(BackToStagePage,400,200,true);
 
 
         Pause.setOnClickListener(new View.OnClickListener() {
@@ -262,7 +288,7 @@ public class StageFive extends Activity implements SensorEventListener
             height=getHeight();
             width=getWidth();
             numMaze=new Maze();
-            numMaze.setSize(9, 9);
+            numMaze.setSize(17, 17);
             numMaze.setWindow(height, width);
             numMaze.createMaze(height,width);
             ball = new BallClass();
@@ -357,19 +383,10 @@ public class StageFive extends Activity implements SensorEventListener
                 canvas.drawColor(Color.BLACK);//Set background color
                 Paint mPaint = new Paint();
                 mPaint.setColor(Color.BLACK);//set pen color
-
-                str1=new StringBuffer();
-                str2=new StringBuffer();
                 if (best==false && timer<Btime){//it's in while loop, so the comparison will be on-going, so add a flag.
                     best=true;
                     savePreferences("Btime",timer);
                 }
-                if (best==true)
-                    str1.append("New best score!!");
-                str2.append("Your Time = "+timer/1000%(60*60*60)/(60*60)+":"+timer/1000%(60*60)/60+":"+timer/1000%60+"."+timer/100%10);
-                mPaint.setTextSize(24);
-                //canvas.drawText(str1.toString(), (width-12*str1.toString().length())/2, (height-numMaze.getRight()+numMaze.getOffset())/2, mPaint);
-                canvas.drawText(str2.toString(), (width-12*str2.toString().length())/2, (height+numMaze.getRight()+numMaze.getOffset())/2, mPaint);
                 numMaze.drawMaze(canvas, mPaint);
                 mPaint.setColor(Color.CYAN);//set pen color
                 ball.drawBall(canvas, mPaint);
@@ -377,23 +394,29 @@ public class StageFive extends Activity implements SensorEventListener
             }
             if(gameOver!=true){
                 if(timer<Btime){
-                    Intent finish = new Intent(com.example.aldrinmcadelia.myapplication.StageFive.this,FinishActivity.class);
+                    Intent finish = new Intent(com.example.aldrinmcadelia.myapplication.StageFive.this,StagePage.class);
                     finish.putExtra("finish",timer);
-                    finish.putExtra("stage", 2);
+                    finish.putExtra("stage", 5);
                     finish.putExtra("bestTime", timer);
+                    finish.putExtra("pass",1);
                     startActivity(finish);
+                    finish();
                 }
                 if(timer>Btime){
-                    Intent finish = new Intent(com.example.aldrinmcadelia.myapplication.StageFive.this,FinishActivity.class);
+                    Intent finish = new Intent(com.example.aldrinmcadelia.myapplication.StageFive.this,StagePage.class);
                     finish.putExtra("finish",timer);
-                    finish.putExtra("stage", 2);
+                    finish.putExtra("stage", 5);
                     finish.putExtra("bestTime", Btime);
+                    finish.putExtra("pass",1);
                     startActivity(finish);
+                    finish();
                 }
             }
             if(gameOver==true){
                 finish();
-                startActivity(new Intent(com.example.aldrinmcadelia.myapplication.StageFive.this,GameOver.class));
+                Intent gameOver = new Intent(com.example.aldrinmcadelia.myapplication.StageFive.this,GameOver.class);
+                gameOver.putExtra("stageNo",5);
+                startActivity(gameOver);
             }
         }
     }

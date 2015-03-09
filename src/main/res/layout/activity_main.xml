@@ -23,7 +23,8 @@
         android:textColor="#0000FF"
         android:id="@+id/Title_view"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="64dp" />
 
     <Button
         android:paddingRight="50dp"
@@ -36,7 +37,6 @@
         android:onClick="StageMenu"
         android:id="@+id/buttonPlay"
         android:background="@drawable/selectcolor"
-        android:layout_marginTop="62dp"
         android:layout_below="@+id/Title_view"
         android:layout_centerHorizontal="true" />
 
@@ -54,9 +54,9 @@
             android:layout_column="3"
             android:layout_gravity="left|bottom"
             android:background="@drawable/selectcolor"
-            android:layout_marginTop="215dp"
-            android:layout_alignLeft="@+id/buttonPlay"
-            android:layout_alignStart="@+id/buttonPlay" />
+            android:layout_below="@+id/BestTime"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp" />
 
         <Button
             android:layout_width="200dp"
@@ -71,9 +71,24 @@
             android:layout_column="31"
             android:onClick="ExitApp"
             android:background="@drawable/selectcolor"
-            android:layout_marginTop="30dp"
             android:layout_below="@+id/buttonAbout"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp" />
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="64dp"
+            android:paddingRight="50dp"
+            android:paddingLeft="50dp"
+            android:text="Best Time"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:id="@+id/BestTime"
+            android:background="@drawable/selectcolor"
+            android:layout_below="@+id/buttonPlay"
+            android:layout_centerHorizontal="true"
+            android:onClick="TheBestTime"
+            android:layout_marginTop="20dp"/>
 
     </RelativeLayout>
 

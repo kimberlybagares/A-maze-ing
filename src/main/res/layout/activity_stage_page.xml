@@ -49,10 +49,8 @@
             android:textSize="20sp"
             android:textColor="#FFFFFF"
             android:id="@+id/two"
-            android:drawableBottom="@drawable/lock"
             android:layout_gravity="center_horizontal|top"
-            android:onClick="stageTwo"
-            android:background="@drawable/selectcolor"/>
+            />
 
         <Button
             android:layout_width="70dp"
@@ -60,11 +58,10 @@
             android:text="3"
             android:textSize="20sp"
             android:textColor="#FFFFFF"
-            android:drawableBottom="@drawable/lock"
             android:id="@+id/three"
             android:layout_gravity="right|top"
             android:onClick="stageThree"
-            android:background="@drawable/blue"/>
+            />
 
         <Button
             android:layout_width="70dp"
@@ -72,11 +69,9 @@
             android:text="4"
             android:textSize="20sp"
             android:textColor="#FFFFFF"
-            android:drawableBottom="@drawable/lock"
             android:id="@+id/four"
             android:layout_gravity="left|center_vertical"
-			android:onClick="stageFour"
-            android:background="@drawable/blue"/>
+			android:onClick="stageFour"/>
 
         <Button
             android:layout_width="70dp"
@@ -84,11 +79,9 @@
             android:text="5"
             android:textSize="20sp"
             android:textColor="#FFFFFF"
-            android:drawableBottom="@drawable/lock"
             android:id="@+id/five"
             android:layout_gravity="center"
-			android:onClick="stageFive"
-            android:background="@drawable/blue"/>
+			android:onClick="stageFive"/>
 
         <Button
             android:layout_width="70dp"
@@ -96,11 +89,9 @@
             android:text="6"
             android:textSize="20sp"
             android:textColor="#FFFFFF"
-            android:drawableBottom="@drawable/lock"
             android:id="@+id/six"
             android:layout_gravity="right|center_vertical"
-			android:onClick="stageSix"
-            android:background="@drawable/blue"/>
+			android:onClick="stageSix"/>
 
         <Button
             android:layout_width="70dp"
@@ -108,11 +99,9 @@
             android:text="7"
             android:textSize="20sp"
             android:textColor="#FFFFFF"
-            android:drawableBottom="@drawable/lock"
             android:id="@+id/seven"
             android:layout_gravity="left|bottom"
-			android:onClick="stageSeven"
-            android:background="@drawable/blue"/>
+			android:onClick="stageSeven"/>
 
         <Button
             android:layout_width="70dp"
@@ -120,11 +109,9 @@
             android:text="8"
             android:textSize="20sp"
             android:textColor="#FFFFFF"
-            android:drawableBottom="@drawable/lock"
             android:id="@+id/eight"
             android:layout_gravity="center_horizontal|bottom"
-			android:onClick="stageEight"
-            android:background="@drawable/blue"/>
+			android:onClick="stageEight"/>
 
         <Button
             android:layout_width="70dp"
@@ -132,16 +119,15 @@
             android:text="9"
             android:textSize="20sp"
             android:textColor="#FFFFFF"
-            android:drawableBottom="@drawable/lock"
             android:id="@+id/nine"
             android:layout_gravity="right|bottom"
-			android:onClick="stageNine"
-            android:background="@drawable/blue"/>
+			android:onClick="stageNine"/>
+
 
     </FrameLayout>
 
     <Button
-        style="?android:attr/buttonStyleSmall"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back"
