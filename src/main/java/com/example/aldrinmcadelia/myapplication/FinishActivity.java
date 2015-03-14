@@ -3,6 +3,7 @@ package com.example.aldrinmcadelia.myapplication;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,10 +15,15 @@ import android.widget.TextView;
 
 public class FinishActivity extends Activity {
 
+    MediaPlayer winner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finish);
+
+        winner = MediaPlayer.create(FinishActivity.this,R.raw.winner);
+        winner.start();
 
         String fontPath = "Lobster_1.3.otf";
 
@@ -133,6 +139,10 @@ public class FinishActivity extends Activity {
     }
 
 
-
+    protected void onPause(){
+        super.onPause();
+        winner.release();
+        finish();
+    }
 
 }

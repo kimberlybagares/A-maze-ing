@@ -14,6 +14,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Gravity;
@@ -65,12 +66,18 @@ public class StageEight extends Activity implements SensorEventListener
     PopupWindow PauseWindow;
     PopupWindow ToStagePage;
 
+    MediaPlayer OurSong;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         newView = new MyView(this);
+
+        OurSong = MediaPlayer.create(StageEight.this,R.raw.stage_sound);
+        OurSong.setLooping(true);
+        OurSong.start();
 
         game = new FrameLayout(this);
         GameButtons = new RelativeLayout(this);
@@ -258,7 +265,7 @@ public class StageEight extends Activity implements SensorEventListener
     private int loadSavedPreferences() {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(this);
-        return sharedPreferences.getInt("Btime", 86400000);
+        return sharedPreferences.getInt("saveStage8", 86400000);
     }
 
     private void savePreferences(String key, int value) {
@@ -385,7 +392,7 @@ public class StageEight extends Activity implements SensorEventListener
                 mPaint.setColor(Color.BLACK);//set pen color
                 if (best==false && timer<Btime){//it's in while loop, so the comparison will be on-going, so add a flag.
                     best=true;
-                    savePreferences("Btime",timer);
+                    savePreferences("saveStage8",timer);
                 }
                 numMaze.drawMaze(canvas, mPaint);
                 mPaint.setColor(Color.CYAN);//set pen color
@@ -451,6 +458,12 @@ public class StageEight extends Activity implements SensorEventListener
     }
     public void onResumeButton(){
         pause = false;
+    }
+
+    protected void onPause(){
+        super.onPause();
+        OurSong.release();
+        finish();
     }
 
 }

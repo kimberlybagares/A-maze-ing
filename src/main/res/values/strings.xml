@@ -28,5 +28,7 @@
     <string name="id">Pause</string>
     <string name="title_activity_finish">FinishActivity</string>
     <string name="title_activity_best_time">BestTime</string>
+    <string name="title_activity_loading_screen">LoadingScreen</string>
+    <string name="title_activity_intro">Intro</string>
 
 </resources>

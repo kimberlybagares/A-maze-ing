@@ -14,7 +14,7 @@ public class BallClass {
     private float yAcc=0f;
     private float radius=0f;
     private float top=0f, bottom=0f, left=0f, right=0f;
-    private float slowDown=5f;
+    private float slowDown=8f;
     private int i=0;
     private int j=0;
 

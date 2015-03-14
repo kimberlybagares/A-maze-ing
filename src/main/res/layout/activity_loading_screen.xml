@@ -1,0 +1,18 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" 	android:gravity="center" android:orientation="vertical"
+    android:layout_height="fill_parent" android:background="#000000">
+
+    <TextView android:text="Please wait while your data gets loaded..."
+        android:textSize="20sp"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:textColor="#FFFFFF">
+    </TextView>
+    <ProgressBar android:id="@+id/mainSpinner1" android:layout_gravity="center"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:progressBackgroundTint="#0000FF"
+        android:indeterminate="true"
+        style="?android:attr/progressBarStyleInverse">
+    </ProgressBar>
+
+</LinearLayout>

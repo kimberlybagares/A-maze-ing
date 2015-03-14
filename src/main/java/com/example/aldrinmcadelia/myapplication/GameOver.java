@@ -3,6 +3,8 @@ package com.example.aldrinmcadelia.myapplication;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,10 +16,16 @@ import android.widget.TextView;
 
 public class GameOver extends Activity {
 
+    MediaPlayer gameOver;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_over);
+
+        gameOver = MediaPlayer.create(GameOver.this,R.raw.game_over);
+        gameOver.start();
 
         String fontPath = "Lobster_1.3.otf";
 
@@ -29,6 +37,8 @@ public class GameOver extends Activity {
         TextView gameOverText = (TextView) findViewById(R.id.GameOverText);
 
         gameOverText.setTypeface(fontStyle);
+        Restart.setTypeface(fontStyle);
+        Quit.setTypeface(fontStyle);
 
         Intent intent = getIntent();
         final int stageNumber = intent.getIntExtra("stageNo",0);
@@ -94,6 +104,11 @@ public class GameOver extends Activity {
         });
     }
 
+    protected void onPause(){
+        super.onPause();
+        gameOver.release();
+        finish();
+    }
 
 
 

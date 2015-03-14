@@ -166,7 +166,8 @@ public class StagePage extends Activity {
             stage2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(com.example.aldrinmcadelia.myapplication.StagePage.this, StageTwo.class);
+                    Intent intent = new Intent(com.example.aldrinmcadelia.myapplication.StagePage.this, LoadingScreen.class);
+                    intent.putExtra("stage",2);
                     startActivity(intent);
                     finish();
                 }
@@ -186,7 +187,8 @@ public class StagePage extends Activity {
             stage3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(com.example.aldrinmcadelia.myapplication.StagePage.this, StageThree.class);
+                    Intent intent = new Intent(com.example.aldrinmcadelia.myapplication.StagePage.this, LoadingScreen.class);
+                    intent.putExtra("stage",3);
                     startActivity(intent);
                     finish();
                 }
@@ -206,7 +208,8 @@ public class StagePage extends Activity {
             stage4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(com.example.aldrinmcadelia.myapplication.StagePage.this, StageFour.class);
+                    Intent intent = new Intent(com.example.aldrinmcadelia.myapplication.StagePage.this, LoadingScreen.class);
+                    intent.putExtra("stage",4);
                     startActivity(intent);
                     finish();
                 }
@@ -226,7 +229,8 @@ public class StagePage extends Activity {
             stage5.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(com.example.aldrinmcadelia.myapplication.StagePage.this, StageFive.class);
+                    Intent intent = new Intent(com.example.aldrinmcadelia.myapplication.StagePage.this, LoadingScreen.class);
+                    intent.putExtra("stage",5);
                     startActivity(intent);
                     finish();
                 }
@@ -246,7 +250,8 @@ public class StagePage extends Activity {
             stage6.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(com.example.aldrinmcadelia.myapplication.StagePage.this, StageSix.class);
+                    Intent intent = new Intent(com.example.aldrinmcadelia.myapplication.StagePage.this, LoadingScreen.class);
+                    intent.putExtra("stage",6);
                     startActivity(intent);
                     finish();
                 }
@@ -266,7 +271,8 @@ public class StagePage extends Activity {
             stage7.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(com.example.aldrinmcadelia.myapplication.StagePage.this, StageSeven.class);
+                    Intent intent = new Intent(com.example.aldrinmcadelia.myapplication.StagePage.this, LoadingScreen.class);
+                    intent.putExtra("stage",7);
                     startActivity(intent);
                     finish();
                 }
@@ -286,7 +292,8 @@ public class StagePage extends Activity {
             stage8.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(com.example.aldrinmcadelia.myapplication.StagePage.this, StageEight.class);
+                    Intent intent = new Intent(com.example.aldrinmcadelia.myapplication.StagePage.this, LoadingScreen.class);
+                    intent.putExtra("stage",8);
                     startActivity(intent);
                     finish();
                 }
@@ -306,7 +313,8 @@ public class StagePage extends Activity {
             stage9.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(com.example.aldrinmcadelia.myapplication.StagePage.this, StageNine.class);
+                    Intent intent = new Intent(com.example.aldrinmcadelia.myapplication.StagePage.this, LoadingScreen.class);
+                    intent.putExtra("stage",9);
                     startActivity(intent);
                     finish();
                 }
@@ -436,8 +444,8 @@ public class StagePage extends Activity {
 
     }
     public void stageOne(View view){
-        Intent intent = new Intent(this, Stageone.class);
-        
+        Intent intent = new Intent(this, LoadingScreen.class);
+        intent.putExtra("stage",1);
         startActivity(intent);
         finish();
     }

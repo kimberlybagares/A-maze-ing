@@ -50,55 +50,64 @@ public class BestTime extends Activity {
             OurSong.release();
             if(stage == 1){
                 savePreferencesStage1("bestStage1",best);
-                Intent two = new Intent(com.example.aldrinmcadelia.myapplication.BestTime.this,StageTwo.class);
+                Intent two = new Intent(com.example.aldrinmcadelia.myapplication.BestTime.this,LoadingScreen.class);
+                two.putExtra("stage",2);
                 startActivity(two);
                 finish();
             }
             if(stage == 2){
                 savePreferencesStage2("bestStage2", best);
-                Intent three = new Intent(com.example.aldrinmcadelia.myapplication.BestTime.this,StageThree.class);
+                Intent three = new Intent(com.example.aldrinmcadelia.myapplication.BestTime.this,LoadingScreen.class);
+                three.putExtra("stage",3);
                 startActivity(three);
                 finish();
             }
             if(stage == 3){
                 savePreferencesStage3("bestStage3", best);
-                Intent four = new Intent(com.example.aldrinmcadelia.myapplication.BestTime.this,StageFour.class);
+                Intent four = new Intent(com.example.aldrinmcadelia.myapplication.BestTime.this,LoadingScreen.class);
+                four.putExtra("stage",4);
                 startActivity(four);
                 finish();
             }
             if(stage == 4){
                 savePreferencesStage4("bestStage4", best);
-                Intent five = new Intent(com.example.aldrinmcadelia.myapplication.BestTime.this,StageFive.class);
+                Intent five = new Intent(com.example.aldrinmcadelia.myapplication.BestTime.this,LoadingScreen.class);
+                five.putExtra("stage",5);
                 startActivity(five);
                 finish();
             }
             if(stage == 5){
                 savePreferencesStage5("bestStage5", best);
-                Intent six = new Intent(com.example.aldrinmcadelia.myapplication.BestTime.this,StageSix.class);
+                Intent six = new Intent(com.example.aldrinmcadelia.myapplication.BestTime.this,LoadingScreen.class);
+                six.putExtra("stage",6);
                 startActivity(six);
                 finish();
             }
             if(stage == 6){
                 savePreferencesStage6("bestStage6", best);
-                Intent seven = new Intent(com.example.aldrinmcadelia.myapplication.BestTime.this,StageSeven.class);
+                Intent seven = new Intent(com.example.aldrinmcadelia.myapplication.BestTime.this,LoadingScreen.class);
+                seven.putExtra("stage",7);
                 startActivity(seven);
                 finish();
             }
             if(stage == 7){
                 savePreferencesStage7("bestStage7", best);
-                Intent eight = new Intent(com.example.aldrinmcadelia.myapplication.BestTime.this,StageEight.class);
+                Intent eight = new Intent(com.example.aldrinmcadelia.myapplication.BestTime.this,LoadingScreen.class);
+                eight.putExtra("stage",8);
                 startActivity(eight);
                 finish();
             }
             if(stage == 8){
                 savePreferencesStage8("bestStage8", best);
-                Intent nine = new Intent(com.example.aldrinmcadelia.myapplication.BestTime.this,StageNine.class);
+                Intent nine = new Intent(com.example.aldrinmcadelia.myapplication.BestTime.this,LoadingScreen.class);
+                nine.putExtra("stage",9);
                 startActivity(nine);
                 finish();
             }
             if(stage == 9){
                 savePreferencesStage9("bestStage9",best);
-                Intent back = new Intent(com.example.aldrinmcadelia.myapplication.BestTime.this,StagePage.class);
+                Intent back = new Intent(com.example.aldrinmcadelia.myapplication.BestTime.this,LoadingScreen.class);
+                back.putExtra("stage",10);
                 startActivity(back);
                 finish();
             }
@@ -187,7 +196,7 @@ public class BestTime extends Activity {
         }
         if(loadStage6 > 30000){
             StringBuffer buffer = new StringBuffer();
-            buffer.append("Stage 5 : ------");
+            buffer.append("Stage 6 : ------");
             best6.setText(buffer);
             best6.setTypeface(fontStyle);
         }else {

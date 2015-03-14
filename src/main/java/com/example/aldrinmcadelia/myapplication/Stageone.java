@@ -84,6 +84,10 @@ public class Stageone extends Activity implements SensorEventListener
         Drawable colorBlack = this.getResources().getDrawable(R.drawable.blueborder);
         Typeface fontStyle = Typeface.createFromAsset(getAssets(),FontPath);
 
+        OurSong = MediaPlayer.create(Stageone.this,R.raw.stage_sound);
+        OurSong.setLooping(true);
+        OurSong.start();
+
         TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
 
 
@@ -460,6 +464,12 @@ public class Stageone extends Activity implements SensorEventListener
     }
     public void onResumeButton(){
         pause = false;
+    }
+
+    protected void onPause(){
+        super.onPause();
+        OurSong.release();
+        finish();
     }
 
 }

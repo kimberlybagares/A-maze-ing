@@ -14,6 +14,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Gravity;
@@ -65,12 +66,18 @@ public class StageFive extends Activity implements SensorEventListener
     PopupWindow PauseWindow;
     PopupWindow ToStagePage;
 
+    MediaPlayer OurSong;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         newView = new MyView(this);
+
+        OurSong = MediaPlayer.create(StageFive.this,R.raw.stage_sound);
+        OurSong.setLooping(true);
+        OurSong.start();
 
         game = new FrameLayout(this);
         GameButtons = new RelativeLayout(this);
@@ -449,6 +456,12 @@ public class StageFive extends Activity implements SensorEventListener
     }
     public void onResumeButton(){
         pause = false;
+    }
+
+    protected void onPause(){
+        super.onPause();
+        OurSong.release();
+        finish();
     }
 
 
