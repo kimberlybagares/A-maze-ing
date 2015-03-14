@@ -14,81 +14,13 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         android:paddingBottom="@dimen/activity_vertical_margin">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="a MAZE ing"
-        android:textStyle="italic|bold"
-        android:textSize="55dp"
-        android:textColor="#0000FF"
-        android:id="@+id/Title_view"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="64dp" />
-
-    <Button
-        android:paddingRight="50dp"
-        android:paddingLeft="50dp"
-        android:layout_width="200dp"
-        android:layout_height="64dp"
-        android:text="@string/button_play"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:onClick="StageMenu"
-        android:id="@+id/buttonPlay"
-        android:background="@drawable/selectcolor"
-        android:layout_below="@+id/Title_view"
-        android:layout_centerHorizontal="true" />
-
-
-        <Button
-            android:layout_width="200dp"
-            android:layout_height="64dp"
-            android:paddingRight="50dp"
-            android:paddingLeft="50dp"
-            android:text="@string/button_about"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:onClick="About"
-            android:id="@+id/buttonAbout"
-            android:layout_column="3"
-            android:layout_gravity="left|bottom"
-            android:background="@drawable/selectcolor"
-            android:layout_below="@+id/BestTime"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp" />
-
-        <Button
-            android:layout_width="200dp"
-            android:layout_height="64dp"
-            android:paddingRight="50dp"
-            android:paddingLeft="50dp"
-            android:text="@string/button_exit"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:id="@+id/buttonExit"
-            android:layout_gravity="right|bottom"
-            android:layout_column="31"
-            android:onClick="ExitApp"
-            android:background="@drawable/selectcolor"
-            android:layout_below="@+id/buttonAbout"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp" />
-
-        <Button
-            android:layout_width="200dp"
-            android:layout_height="64dp"
-            android:paddingRight="50dp"
-            android:paddingLeft="50dp"
-            android:text="Best Time"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:id="@+id/BestTime"
-            android:background="@drawable/selectcolor"
-            android:layout_below="@+id/buttonPlay"
-            android:layout_centerHorizontal="true"
-            android:onClick="TheBestTime"
-            android:layout_marginTop="20dp"/>
+   <ImageView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:src="@drawable/amaze_logo3"
+       android:layout_alignParentTop="true"
+       android:layout_centerHorizontal="true"
+       android:layout_marginTop="161dp" />
 
     </RelativeLayout>
 
